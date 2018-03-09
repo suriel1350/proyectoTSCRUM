@@ -67,7 +67,7 @@ function loginUser(req, res){
 			if(!user){
 				res.status(404).send({message: 'El usuario no existe'});			
 			}else{
-
+				console.log(password + " " + user.password);
 				//comprobar la contraseña
 				bcrypt.compare(password, user.password, function(err, check){
 					if(check){
@@ -104,6 +104,7 @@ function updateUser(req, res){
 			if(!userUpdated){
 				res.status(404).send({message: 'No se ha podido actualizar el usuario'});										
 			}else{
+				console.log(update);
 				res.status(200).send({user: userUpdated});
 			}
 		}

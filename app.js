@@ -7,6 +7,7 @@ var app = express();
 
 // cargar rutas para los diferentes modelos que hemos ido creando
 var user_routes = require('./routes/user');
+var proyecto_routes = require('./routes/proyecto');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 
 //rutas base
 app.use('/api', user_routes);
+app.use('/api', proyecto_routes);
 	//middleware
 	
 /*app.get('/pruebas', function(req, res){
