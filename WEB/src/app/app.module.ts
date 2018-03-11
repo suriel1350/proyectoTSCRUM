@@ -9,6 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { AuthService } from './services/auth.service';
+import { ProjectCreateComponent } from './components/projects/project-create/project-create.component';
+import { DataService } from './services/data.service';
 
 
 @NgModule({
@@ -16,6 +18,7 @@ import { AuthService } from './services/auth.service';
     AppComponent,
     LoginComponent,
     HomeComponent,
+    ProjectCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { AuthService } from './services/auth.service';
     FormsModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })
