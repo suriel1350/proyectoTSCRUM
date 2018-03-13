@@ -1,33 +1,56 @@
 <h2>Usuario logeado: {{user.name}}</h2>
 
 <form (submit)="createProject()">
-  <label for="name">Nombre</label>
-  <input type="text" name="name" id="name" [(ngModel)]="project.name" placeholder="Nombre" required>
-  <br>
-  <label for="start">Fecha de inicio</label>
-  <input type="date" name="start" id="start" [(ngModel)]="project.start">
-  <br>
-  <label for="end">Fecha de término</label>
-  <input type="date" name="end" id="end" [(ngModel)]="project.end">
-  <br>
-  <label for="description">Descripción</label>
-  <textarea name="description" id="description" rows="5" cols="50" placeholder="Descripción del proyecto." [(ngModel)]="project.description"></textarea>
-  <br>
-  <label for="background">Background</label>
-  <textarea name="background" id="background" rows="5" cols="50" placeholder="Trasfondo del proyecto." [(ngModel)]="project.background"></textarea>
-  <br>
-  <label for="risk">Riesgos</label>
-  <textarea name="risk" id="risk" rows="5" cols="50" placeholder="Riesgos del proyecto." [(ngModel)]="project.risk"></textarea>
-  <br>
-  <label for="vision">Vision</label>
-  <textarea name="vision" id="vision" rows="5" cols="50" placeholder="Visión del proyecto." [(ngModel)]="project.vision"></textarea>
-  <br>
-  <label for="scope">Alcance</label>
-  <textarea name="scope" id="scope" rows="5" cols="50" placeholder="Riesgos del proyecto." [(ngModel)]="project.scope"></textarea>
-  <br>
-  <label for="technologies">Tecnologías</label>
-  <textarea name="technologies" id="technologies" rows="5" cols="50" placeholder="Riesgos del proyecto." [(ngModel)]="project.technologies"></textarea>
-  <br>
-  <button type="submit">Crear proyecto</button>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" name="name" id="name" [(ngModel)]="project.name" placeholder="Nombre" required>  
+    </div>
+  
+    <div class="form-group">
+      <label for="start">Fecha de inicio</label>
+      <input type="date" name="start" id="start" [(ngModel)]="project.start">  
+    </div>
+  
+    <div class="form-group">
+      <label for="end">Fecha de término</label>
+      <input type="date" name="end" id="end" [(ngModel)]="project.end">  
+    </div>
+  
+    <div class="col">
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <textarea name="description" id="description" rows="5" cols="50" placeholder="Descripción del proyecto." [(ngModel)]="project.description"></textarea>  
+      </div>
+    
+      <div class="form-group">
+        <label for="background">Background</label>
+        <textarea name="background" id="background" rows="5" cols="50" placeholder="Trasfondo del proyecto." [(ngModel)]="project.background"></textarea>  
+      </div>
+    
+      <div class="form-group">
+        <label for="risk">Riesgos</label>
+        <textarea name="risk" id="risk" rows="5" cols="50" placeholder="Riesgos del proyecto." [(ngModel)]="project.risk"></textarea>  
+      </div>
+    
+      <div class="form-group">
+        <label for="vision">Vision</label>
+        <textarea name="vision" id="vision" rows="5" cols="50" placeholder="Visión del proyecto." [(ngModel)]="project.vision"></textarea>  
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="form-group">
+        <label for="scope">Alcance</label>
+        <textarea name="scope" id="scope" rows="5" cols="50" placeholder="Riesgos del proyecto." [(ngModel)]="project.scope"></textarea>  
+      </div>
+  
+      <div class="form-group">
+        <label for="technologies">Tecnologías</label>
+        <textarea name="technologies" id="technologies" rows="5" cols="50" placeholder="Riesgos del proyecto." [(ngModel)]="project.technologies"></textarea>  
+      </div> 
+    </div> 
+  </div>
+  <button type="submit" class="btn btn-primary">Crear proyecto</button>
 </form>
 <p *ngIf="message">{{message}}</p>
