@@ -1,8 +1,51 @@
-<form (submit)="login()">
-  <label for="email">Email</label>
-  <input type="text" name="email" id="email" [(ngModel)]="user.email">
-  <label for="password">Password</label>
-  <input type="password" name="password" id="password" [(ngModel)]="user.password">
-  <button type="submit">Log in</button>
-</form>
-<p *ngIf="message">{{message}}</p>
+	<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #0000FF;">
+	  <a class="navbar-brand" href="#">
+	  		<img src="" width="30" height="30" class="d-inline-block align-top" alt="">
+    		Tecnologico de Monterrey
+	  </a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	</nav>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form (submit)="login()" class="login100-form validate-form">
+					
+					
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" [(ngModel)]="user.email">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Usuario</span>
+					</div>
+					
+					
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="pass" [(ngModel)]="user.password">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Contraseña</span>
+					</div>
+
+					<div class="flex-sb-m w-full p-t-3 p-b-32">
+
+						<div>
+							<a href="#" class="txt1">
+								¿Olvidaste tu contraseña?
+							</a>
+						</div>
+					</div>
+			
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" type="submit">
+							Ingresar
+						</button>
+					</div>
+				</form>
+				<p *ngIf="message">{{message}}</p>
+				<div class="login100-more" style="background-image: url('');">
+				</div>
+			</div>
+		</div>
+	</div>
