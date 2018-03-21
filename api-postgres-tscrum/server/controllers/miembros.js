@@ -18,7 +18,7 @@ function saveUser(req, res){
 
 	Miembros.findOne({
 		where: {
-			matricula: params.matricula,
+			matricula: params.matricula.toUpperCase(),
 		}
 	})
 	.then(user => {
@@ -33,7 +33,7 @@ function saveUser(req, res){
 						//GUaradar el usuario 				
 						return Miembros
 					      .create({
-					        matricula: params.matricula,
+					        matricula: params.matricula.toUpperCase(),
 					        nombre: params.nombre,
 					        carrera: params.carrera,			      
 					        fotografia: 'null',
@@ -75,7 +75,7 @@ function loginUser(req, res){
 
 	Miembros.findOne({
 		where: {
-			matricula: matricula.toLowerCase(),
+			matricula: matricula.toUpperCase(),
 		}
 	})
 	.then(user => {
@@ -180,7 +180,7 @@ function updateUser(req, res){
 	if(params.matricula){		
 		Miembros.findOne({
 			where: {
-				matricula: params.matricula,
+				matricula: params.matricula.toUpperCase(),
 			}
 		})
 		.then(user => {
@@ -201,7 +201,7 @@ function updateUser(req, res){
 							      else{
 								      return user
 								        .update({					          	
-								          	matricula: params.matricula || user.matricula,
+								          	matricula: params.matricula.toUpperCase() || user.matricula,
 									        nombre: params.nombre || user.nombre,
 									        carrera: params.carrera || user.carrera,						        
 									        password: pass,
@@ -231,7 +231,7 @@ function updateUser(req, res){
 						      else{
 							      return user
 							        .update({					          	
-							          	matricula: params.matricula || user.matricula,
+							          	matricula: params.matricula.toUpperCase() || user.matricula,
 								        nombre: params.nombre || user.nombre,
 								        carrera: params.carrera || user.carrera,
 							        })
@@ -270,7 +270,7 @@ function updateUser(req, res){
 							      else{
 								      return user
 								        .update({					          	
-								          	matricula: params.matricula || user.matricula,
+								          	
 									        nombre: params.nombre || user.nombre,
 									        carrera: params.carrera || user.carrera,						        
 									        password: pass,
@@ -300,7 +300,7 @@ function updateUser(req, res){
 						      else{
 							      return user
 							        .update({					          	
-							          	matricula: params.matricula || user.matricula,
+							          	
 								        nombre: params.nombre || user.nombre,
 								        carrera: params.carrera || user.carrera,
 							        })
