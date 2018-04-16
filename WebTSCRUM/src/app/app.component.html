@@ -1,0 +1,43 @@
+<div *ngIf="identity" class="navigation col-lg-1 col-md-1 col-sm-2 col-xs-3">
+  <nav id="user_logged">
+    
+    
+
+    
+    <a (click)="logout()" class="btn-logout">      
+      Salir
+    </a>
+  </nav> 
+</div>
+
+<div [class.hidden]="!identity" class="central col-lg-11">
+  <router-outlet></router-outlet>
+</div>
+
+<div class="col-lg-11" *ngIf="!identity">
+  <div class="col-lg-6">
+    <p>Identificate</p>
+    <div *ngIf="errorMessage">
+      <div>
+        <strong>Error</strong> {{errorMessage}}
+      </div>
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-7">
+      <p>
+        <label>Matricula</label>
+        <input type="text" #matricula="ngModel" name="matricula" [(ngModel)]="user.matricula" required>
+        <span *ngIf="!matricula.valid && matricula.touched">
+          La matricula es obligatoria
+        </span>
+      </p>
+      <p>
+        <label>Contraseña</label>
+        <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" required>
+      </p>
+
+      <input type="submit" value="Entrar">
+    </form>
+  </div>
+</div>
+
+
