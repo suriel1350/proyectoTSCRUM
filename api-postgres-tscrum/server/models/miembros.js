@@ -27,9 +27,14 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Miembros.associate = (models) => {
-    Miembros.hasMany(models.Proyecto, {
+    Miembros.hasMany(models.Proyectos, {
       foreignKey: 'idmiembros',
       as: 'idmiembros',
+    });
+
+    Miembros.hasMany(models.DetalleProyectos, {
+      foreignKey: 'idproyectos',
+      as: 'idproyectos',
     });
   };
 

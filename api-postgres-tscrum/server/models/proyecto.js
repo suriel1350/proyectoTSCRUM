@@ -1,41 +1,44 @@
 module.exports = (sequelize, DataTypes) => {
-  const Proyecto = sequelize.define('Proyecto', {
+  const Proyectos = sequelize.define('Proyectos', {
     nombre: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     vision: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     background: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     riesgos: {
       type: DataTypes.STRING,
-      allowNull: false,
+    },
+    role: {
+      type: DataTypes.STRING,
     },
     alcance: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     fechainicio: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     fechafinal: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
   });
 
-  Proyecto.associate = (models) => {
-    Proyecto.belongsTo(models.Miembros, {
+  Proyectos.associate = (models) => {
+    Proyectos.belongsTo(models.Miembros, {
       foreignKey: 'idmiembros',
       onDelete: 'CASCADE',
     });
+
+    Proyectos.hasMany(models.DetalleProyectos, {
+      foreignKey: 'idproyectos',
+      as: 'idproyectos',
+    });
+
   };
 
-  return Proyecto;
+  return Proyectos;
 };
