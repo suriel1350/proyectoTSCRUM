@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { routing, appRoutingProviders } from './app.routing';
 
 import { AppComponent } from './app.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { HomeComponent } from './components/home.component';
 import { UserEditComponent } from './components/user-edit.component';
@@ -35,6 +36,7 @@ import { MiembroEditComponent } from './components/miembros-edit.component';
   ],
   imports: [
     BrowserModule,
+    Ng2SearchPipeModule,
     FormsModule,
     HttpModule,
     routing

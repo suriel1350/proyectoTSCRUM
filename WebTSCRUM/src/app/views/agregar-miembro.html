@@ -10,6 +10,10 @@
 
 <div class="clearfix"></div>
 
+<div class="col-md-3">Buscar:
+  <input type="text" [(ngModel)]="term" placeholder="Buscar..." class="form-control" />
+</div>
+
 <table class="table table-hover" *ngIf="identity" style="background-color: white;">
   <thead>
     <tr>      
@@ -19,7 +23,7 @@
       <th class="text-center" scope="col">Opciones</th>      
     </tr>
   </thead>
-  <tbody *ngFor="let use of user; let i =index">
+  <tbody *ngFor="let use of user |filter:term">
     <tr>
       <th class="text-center" scope="row">{{use.nombre}}</th>      
       <td class="text-center">{{use.matricula}}</td>
