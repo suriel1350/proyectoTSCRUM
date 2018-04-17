@@ -5,6 +5,7 @@ import { GLOBAL } from '../services/global';
 import { UserService } from '../services/user.service';
 import { ProyectoService } from '../services/proyecto.service';
 import { User } from '../models/miembro';
+import { Agregado } from '../models/agregado';
 import { Detalles } from '../models/detallesids';
 
 @Component({
@@ -16,6 +17,7 @@ import { Detalles } from '../models/detallesids';
 export class MiembroAddComponent implements OnInit{
 	public titulo: string;
 	public user: User[] = [];
+	public agregado: Agregado[] = [];
 	public identity;
 	public token;
 	public url: string;
@@ -33,6 +35,7 @@ export class MiembroAddComponent implements OnInit{
   		this.token = this._userService.getToken();
   		this.url = GLOBAL.url;
   		this.detalles = new Detalles('', '');
+  		
 	}
 
 	ngOnInit(){
@@ -53,6 +56,8 @@ export class MiembroAddComponent implements OnInit{
  					for (var i in response) {
  						//console.log(response[i]);
 						this.user.push(response[i]);
+						let aux = new Agregado('No', 'No');
+						this.agregado.push(aux);						
  					}
 				}
 			},
@@ -84,6 +89,7 @@ export class MiembroAddComponent implements OnInit{
 					}else{						
 						//console.log(response[0].idmiembros); 
 						console.log(response);
+						
 						this.alertMessage = 'Miembro agregado';
 						//this.proyecto = response[0].idmiembros;						
 
