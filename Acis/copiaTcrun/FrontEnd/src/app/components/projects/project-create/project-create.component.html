@@ -1,0 +1,57 @@
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">Crear un proyecto</h4>
+        <p class="card-category">Ingresa la informacion del pro</p>
+    </div>
+    <div class="card-body">
+        <div *ngIf="message" class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <i class="material-icons">close</i>
+            </button>
+            <span>
+                <b> Error</b> {{message}}</span>
+        </div>
+        <form (submit)="createProject()">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="vision">Visión</label>
+              <input class="form-control" type="text" id="vision" name="vision" [(ngModel)]="project.vision">
+            </div>
+            <div class="form-group">
+              <label class="bmd-label-floating" for="name">Nombre</label>
+              <input class="form-control" type="text" id="name" name="name" [(ngModel)]="project.name">
+            </div>
+            <div>
+                <label class="label">Fecha de inicio</label>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="date" id="begin_date" name="begin_date" [(ngModel)]="project.begin_date">
+            </div>
+            <div>
+                <label class="label">Fecha de termino</label>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="date" id="end_date" name="end_date" [(ngModel)]="project.end_date">
+            </div>
+            <div class="form-group">
+              <label class="bmd-label-floating" for="background">Antecedentes</label>
+              <input class="form-control" type="text" id="background" name="background" [(ngModel)]="project.background">
+            </div>
+            <div class="form-group">
+              <label class="bmd-label-floating" for="risks">Riesgos</label>
+              <input class="form-control" type="text" id="risks" name="risks" [(ngModel)]="project.risks">
+            </div>
+            <div class="form-group">
+                <label class="bmd-label-floating" for="reach">Alcance</label>
+                <input class="form-control" type="text" id="reach" name="reach" [(ngModel)]="project.reach">
+            </div>
+            <div class="form-group">
+                <label class="bmd-label-floating" for="scrum_master_id">Scrum Master</label>
+                <select class="form-control" id="scrum_master_id" name="scrum_master_id" [(ngModel)]="project.scrum_master_id">
+                    <option *ngFor="let member of members" value="{{member.id}}">{{member.id}} || {{member.name}} </option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary pull-right">Ingresar</button>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>

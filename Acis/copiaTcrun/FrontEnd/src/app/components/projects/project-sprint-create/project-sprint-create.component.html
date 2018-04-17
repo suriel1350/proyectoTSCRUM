@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-md-12" >
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Sprints del proyecto</h4>
+                <p>Sprints</p>
+            </div>
+            <div class="card-body">
+                  <div *ngIf="message && message != 'Succes'" class="alert alert-danger">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="material-icons">close</i>
+                      </button>
+                      <span>
+                          <b> Error</b> {{message}}</span>
+                  </div>
+                  <div *ngIf="message && message == 'Succes'" class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons">close</i>
+                    </button>
+                    <span>
+                        <b> Success</b> {{message}}</span>
+                </div>
+                <div class="table-responsive">
+                    <form (submit)="createSprint()">
+                        <div class="row">
+                            <div class="col-md-4" >
+                                <div class="form-group">
+                                    <label class="bmd-label-floating" for="days">Días</label>
+                                    <input class="form-control" type="number" min="1" id="days" name="days" [(ngModel)]="sprint.days">
+                                </div>
+                            </div>
+                            <div class="col-md-4" >
+                                <div class="form-group">
+                                    <label class="bmd-label-floating" for="comment">Comentario</label>
+                                    <input class="form-control" type="text" id="comment" name="comment" [(ngModel)]="sprint.comment">
+                                </div>
+                            </div>
+                            <div class="col-md-4" >
+                                <input class="form-control" type="hidden" id="project_id" name="prject_id"  value="{{sprint.project_id}}" [(ngModel)]="sprint.project_id">
+                                <button type="submit" class="btn btn-success pull-right"><i class="material-icons">add box</i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Días
+                            </th>
+                            <th>
+                                Comentarios
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let psprint of psprints">
+                                <td>
+                                    {{psprint.id}}
+                                </td>
+                                <td>
+                                    {{psprint.days}}
+                                </td>
+                                <td>
+                                    {{psprint.comment}}
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger pull-right" (click)="deleteSprint(psprint.id)"><i class="material-icons">delete</i></button>
+                                    <button class="btn btn-primary pull-right" routerLink="/sprints/{{psprint.id}}"><i class="material-icons">info</i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

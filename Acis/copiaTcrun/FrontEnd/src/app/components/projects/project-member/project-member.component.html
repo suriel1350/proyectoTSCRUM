@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title ">Miembros</h4>
+        <p class="card-category">Miembros del proyecto</p>
+      </div>
+      <div class="card-body">
+        <div class="col-md-12">
+          <div *ngIf="message" class="alert alert-danger col-md-12">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <i class="material-icons">close</i>
+            </button>
+            <span>
+              <b> Error</b> {{message}}</span>
+          </div>
+
+          <form (submit)="addMember()">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating" for="member_id">Miembro</label>
+                  <select class="form-control" id="member_id" name="member_id" [(ngModel)]="member_id">
+                    <option *ngFor="let member of members" value="{{member.id}}">{{member.id}} || {{member.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating" for="project_role">Rol en el proyecto</label>
+                  <select class="form-control" id="project_role" name="project_role" [(ngModel)]="project_role">
+                    <option *ngFor="let project_role of project_roles" value="{{project_role}}">{{project_role}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-success">Agregar miembro</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Rol en el proyecto</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let member of projectMembers">
+                <td class="text-primary">{{member.id}}</td>
+                <td>{{member.name}}</td>
+                <td>{{member.Member_projects.project_role}}</td>
+                <td>
+                  <!-- <button class="btn btn-danger pull-right text-white text-center" (click)="deleteMember(member.id)">
+                    <i class="material-icons">delete</i>
+                  </button> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

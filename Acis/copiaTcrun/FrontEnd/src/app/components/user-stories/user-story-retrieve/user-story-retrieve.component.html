@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-12" >
+      <div class="card">
+          <div class="card-header card-header-primary">
+              <h4 class="card-title ">Historia de usuario: {{user_story.id}}</h4>
+          </div>
+          <div class="card-body">
+              <div *ngIf="message" class="alert alert-danger">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <i class="material-icons">close</i>
+                  </button>
+                  <span>
+                      <b> Error</b> {{message}}</span>
+              </div>
+              <div class="col-md-12">
+                  <h4><b>Peso:</b> {{user_story.weight}}</h4>
+              </div>
+              <div class="col-md-12">
+                  <h4><b>Estado Scrum:</b> {{user_story.scrum_board_status}}</h4>
+              </div>
+              <div class="col-md-12">
+                  <h4><b>Descripcion:</b> {{user_story.description}}</h4>
+              </div>
+              <div class="col-md-12">
+                  <h4><b>Prioridad:</b> {{user_story.priority}}</h4>
+              </div>
+              <div class="col-md-12">
+                  <h4><b>Sprint Id:</b> {{user_story.sprint_id}}</h4>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12" >
+      <div class="card">
+          <app-acceptance-criteria-list></app-acceptance-criteria-list>
+
+      </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-12" >
+        <div class="card">
+            <app-task-list></app-task-list>
+    
+        </div>
+    </div>
+</div>
+      
