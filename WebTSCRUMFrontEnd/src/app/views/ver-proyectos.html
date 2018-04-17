@@ -1,0 +1,37 @@
+<div class="head-page" *ngIf="identity">      	
+	<h4>{{titulo}} <button [routerLink]="['/']">Volver a Inicio</button></h4>	
+</div>
+
+<div *ngIf="alertMessage">
+	<div>
+		{{alertMessage}}
+	</div>
+</div>
+
+<div class="clearfix"></div>
+
+<table class="table table-hover" *ngIf="identity" style="background-color: white;">
+  <thead>
+    <tr>
+      <th class="text-center" scope="col">id</th>
+      <th class="text-center" scope="col">Nombre</th>
+      <th class="text-center" scope="col">Miembros</th>
+      <th class="text-center" scope="col">Role</th>
+      <th class="text-center" scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let proyect of proyecto">
+    <tr> 
+      <th class="text-center" scope="row">{{proyect.id}}</th>
+      <td class="text-center">{{proyect.nombre}}</td>
+      <td class="text-center">{{proyect.idproyectos.length}}</td>
+      <td class="text-center">{{proyect.role}}</td>
+      <td class="text-center">
+      	<button [routerLink]="['/detalles-proyecto',proyect.id]">Detalles</button>
+        <button [routerLink]="['/update-project',proyect.id]">Editar</button>
+        <button [routerLink]="['/agregar-miembro',proyect.id]">Agregar Miembros</button>
+        <button (click)="eliminarProyecto(proyect.id)">Borrar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,11 @@
+<div *ngIf="identity" class="col-lg-8 col-lg-offset-2">
+	<div>
+		<h1>Bienvenido a TSCRUM {{identity.nombre}}</h1>
+		<p>Crea Proyectos y Diviertete</p>
+		<p>
+			<button [routerLink]="['/mis-proyectos',identity.id]" role="button">Ver mis proyectos</button> 
+			<button [routerLink]="['/proyecto/crear/',identity.id]" role="button">Crear Proyecto</button> 
+			
+		</p>
+	</div>
+</div>
