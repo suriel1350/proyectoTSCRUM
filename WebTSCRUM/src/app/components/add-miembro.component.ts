@@ -7,6 +7,7 @@ import { ProyectoService } from '../services/proyecto.service';
 import { User } from '../models/miembro';
 import { Agregado } from '../models/agregado';
 import { Detalles } from '../models/detallesids';
+import { DetallesOwner } from '../models/detallesOwner';
 
 @Component({
   selector: 'agregar-miembro', 
@@ -22,7 +23,9 @@ export class MiembroAddComponent implements OnInit{
 	public token;
 	public url: string;
 	public alertMessage;
-	public detalles: Detalles;		
+	public detalles: Detalles;	
+	public detallesOwner: DetallesOwner;	
+	public esOwner: string;
 
 	constructor(
 		private _route: ActivatedRoute,
@@ -35,6 +38,8 @@ export class MiembroAddComponent implements OnInit{
   		this.token = this._userService.getToken();
   		this.url = GLOBAL.url;
   		this.detalles = new Detalles('', '');
+  		this.detallesOwner = new DetallesOwner('', '', '');
+  		this.esOwner = localStorage.esOwner;
   		
 	}
 
@@ -89,7 +94,8 @@ export class MiembroAddComponent implements OnInit{
 					}else{						
 						//console.log(response[0].idmiembros); 
 						console.log(response);
-						
+						localStorage.esOwner = "Si";
+						this.esOwner = localStorage.esOwner;
 						this.alertMessage = 'Miembro agregado';
 						//this.proyecto = response[0].idmiembros;						
 
@@ -107,5 +113,43 @@ export class MiembroAddComponent implements OnInit{
 				}
 			);
 		});
+	}
+
+	addOwner(id){
+		console.log(id);
+		this._route.params.forEach((params: Params) => {
+			let idProject = params['idProject'];
+			this.detallesOwner.idmiembro = id;
+			this.detallesOwner.idproyecto = idProject;
+			this.detallesOwner.role = 'product_owner';
+			this.esOwner = 'Si';
+
+			this._proyectoService.addMiembros(this.token, this.detallesOwner).subscribe(
+				response => {					
+
+					if(!response){
+						this._router.navigate(['/']);
+					}else{						
+						//console.log(response[0].idmiembros); 
+						console.log(response);
+						localStorage.esOwner = "Si";
+						this.esOwner = localStorage.esOwner;
+						this.alertMessage = 'Product Owner Agregado';
+						//this.proyecto = response[0].idmiembros;						
+
+					}
+				},
+				error => {
+					var errorMessage = <any>error;
+
+		  			if(errorMessage != null){
+		  				var body = JSON.parse(error._body);
+		  				this.alertMessage = body.message;
+		  				
+		  				console.log(error);
+		  			}
+				}
+			);
+		});		
 	}
 }

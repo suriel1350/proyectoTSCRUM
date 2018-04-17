@@ -122,7 +122,11 @@ export class ProyectoDetallesComponent implements OnInit{
 		});
 	}
 
-	eliminarMiembro(idmi){
+	eliminarMiembro(idmi, role){
+		if(role == "product_owner"){
+			localStorage.esOwner = "No";
+		}
+		
 		this._route.params.forEach((params: Params) => {		
 			let idProject = params['idProject'];
 

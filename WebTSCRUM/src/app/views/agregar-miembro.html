@@ -26,7 +26,8 @@
       <th class="text-center" scope="col">
         <mfDefaultSorter by="carrera">Carrera</mfDefaultSorter>
       </th>
-      <th class="text-center" scope="col">Opciones</th>      
+      <th class="text-center" scope="col">Opciones</th>
+      <th class="text-center" scope="col">P.O</th>
     </tr>
   </thead>
   <tbody *ngFor="let use of mf.data|filter:term">
@@ -36,6 +37,9 @@
       <td class="text-center">{{use.carrera}}</td>
       <td class="text-center">        
         <button (click)="addMiembro(use.id)">Agregar a Proyecto</button>
+      </td>
+      <td class="text-center">        
+        <input *ngIf="esOwner=='No'" type="checkbox" (click)="addOwner(use.id)" data-toggle="toggle">Product Owner
       </td>      
     </tr> 
   </tbody>

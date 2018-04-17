@@ -47,6 +47,7 @@ export class AppComponent implements OnInit{
   			let identity = response.user;
         console.log(response.user);
   			this.identity = identity;
+        localStorage.setItem("esOwner", "No");
 
   			if(!this.identity.id){
   				alert("El usuario no está correctamente identificado");
@@ -96,7 +97,8 @@ export class AppComponent implements OnInit{
 
   logout(){
   	localStorage.removeItem('identity');
-  	localStorage.removeItem('token');
+    localStorage.removeItem('token');
+  	localStorage.removeItem('esOwner');
   	localStorage.clear();
   	this.identity = null;
   	this.token = null;
