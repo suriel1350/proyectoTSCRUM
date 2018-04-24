@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+<div class="content-wrapper" style="padding-top: 5%;">
   <div class="container-fluid">
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
@@ -9,7 +9,7 @@
     </ol>
     <hr>
     <div class="head-page" *ngIf="identity">        
-      <h5>{{titulo}} <button [routerLink]="['/']">Volver a Inicio</button></h5> 
+      <h5>{{titulo}} <button type="button" class="btn btn-primary" [routerLink]="['/']">Volver a Inicio</button></h5> 
     </div>
     
     <div *ngIf="alertMessage">
