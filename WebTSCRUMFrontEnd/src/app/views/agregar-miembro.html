@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+<div class="content-wrapper" style="padding-top: 5%;">
   <div class="container-fluid">
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
@@ -7,10 +7,9 @@
       </li>
       <li class="breadcrumb-item active">Agregar miembros</li>
     </ol>
-    <h1>Agregar miembros al proyecto</h1>
     <hr>
     <div class="head-page" *ngIf="identity">      	
-      <h5>{{titulo}} <button [routerLink]="['/mis-proyectos',identity.id]">Volver a Proyectos</button></h5>	
+      <h1>{{titulo}} <button type="button" class="btn btn-primary" [routerLink]="['/mis-proyectos',identity.id]">Volver a Proyectos</button></h1>	
     </div>
     
     <div *ngIf="alertMessage">

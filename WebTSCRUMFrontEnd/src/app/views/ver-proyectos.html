@@ -29,10 +29,10 @@
               <td class="text-center">{{proyect.idproyectos.length}}</td>
               <td class="text-center">{{proyect.role}}</td>
               <td class="text-center">
-                <button [routerLink]="['/detalles-proyecto',proyect.id]">Detalles</button>
-                <button [routerLink]="['/update-project',proyect.id]">Editar</button>
-                <button [routerLink]="['/agregar-miembro',proyect.id]">Agregar Miembros</button>
-                <button (click)="eliminarProyecto(proyect.id)">Borrar</button>
+                <button type="button" class="btn btn-info" [routerLink]="['/detalles-proyecto',proyect.id]">Detalles</button>
+                <button type="button" class="btn btn-success" [routerLink]="['/update-project',proyect.id]">Editar</button>
+                <button type="button" class="btn btn-primary" [routerLink]="['/agregar-miembro',proyect.id]">Agregar Miembros</button>
+                <button type="button" class="btn btn-danger" (click)="eliminarProyecto(proyect.id)">Borrar</button>
               </td>
             </tr>
           </tbody>

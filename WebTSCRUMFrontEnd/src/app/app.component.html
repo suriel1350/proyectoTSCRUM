@@ -1,3 +1,47 @@
+
+  <div class="content-wrapper" style="padding-top: 5%;">
+      <div class="container-fluid">
+          <div class="col-lg-11" *ngIf="!identity">
+              <div class="col-lg-6">
+                <div *ngIf="errorMessage">
+                  <div>
+                    <strong>Error</strong> {{errorMessage}}
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-4"></div>
+
+                    <div class="col-md-8">
+                        <div class="card card-login mx-auto mt-5">
+                          <div class="card-header">Login</div>
+                          <img src="assets/img/logo/tcrum.png" class="img-responsive" alt="Responsive image" height="100px" width="250px">
+                          <div class="card-body">
+                              <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-7">
+                                  <div class="form-group">
+                                      <label for="exampleInputEmail1">Matrícula</label>
+                                      <input type="text" #matricula="ngModel" name="matricula" [(ngModel)]="user.matricula" required>
+                                      <span *ngIf="!matricula.valid && matricula.touched">
+                                        La matricula 
+                                      </span>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleInputPassword1">Contraseña</label>
+                                      <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" required>
+                                    </div>
+                                
+                                    <button type="submit" class="btn btn-primary">Entrar</button>
+                                </form>
+                          </div>
+                        </div>  
+                    </div>
+                  </div>    
+                </div>
+              </div>
+            </div> 
+      </div>
+  </div>
+
 <div *ngIf="identity" class="navigation col-lg-1 col-md-1 col-sm-2 col-xs-3">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="user_logged">
@@ -16,39 +60,6 @@
 <div [class.hidden]="!identity" class="central col-lg-11">
   <router-outlet></router-outlet>
 </div>
-
-  <div class="col-lg-11" *ngIf="!identity">
-      <div class="col-lg-6">
-        <p>Identificate</p>
-        <div *ngIf="errorMessage">
-          <div>
-            <strong>Error</strong> {{errorMessage}}
-          </div>
-        </div>
-        <div class="container">
-            <div class="card card-login mx-auto mt-5">
-              <div class="card-header">Login</div>
-              <div class="card-body">
-                  <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-7">
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Matrícula</label>
-                          <input type="text" #matricula="ngModel" name="matricula" [(ngModel)]="user.matricula" required>
-                          <span *ngIf="!matricula.valid && matricula.touched">
-                            La matricula 
-                          </span>
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Contraseña</label>
-                          <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" required>
-                        </div>
-                    
-                        <button type="submit" class="btn btn-primary">Entrar</button>
-                    </form>
-              </div>
-            </div>
-          </div>
-      </div>
-    </div>      
 
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
