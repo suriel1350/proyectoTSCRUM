@@ -65,14 +65,14 @@ module.exports = (app) => {
   app.get('/api/sprints', sprintsController.list);
   app.get('/api/sprints/:id', md_auth.ensureAuth, sprintsController.retrieve);
   app.put('/api/sprints/:id', sprintsController.update);
-  app.delete('/api/sprints/:id', sprintsController.destroy);
+  app.delete('/api/sprints/:id', md_auth.ensureAuth, sprintsController.destroy);
 
   //Routes for the USER_STORIES table
   app.post('/api/user-stories', md_auth.ensureAuth, userStoriesController.create);  
   app.get('/api/user-stories', userStoriesController.list);
-  app.get('/api/user-stories/:id', userStoriesController.retrieve);
-  app.put('/api/user-stories/:id', userStoriesController.update);
-  app.delete('/api/user-stories/:id', userStoriesController.destroy);
+  app.get('/api/user-stories/:id', md_auth.ensureAuth, userStoriesController.retrieve);
+  app.put('/api/user-stories/:id', md_auth.ensureAuth, userStoriesController.update);
+  app.delete('/api/user-stories/:id', md_auth.ensureAuth, userStoriesController.destroy);
 
   //Routes for the ACCEPTANCE_CRITERIA table
   app.post('/api/acceptance-criteria', acceptance_criteriaController.create);  
