@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12" >
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Sprint numero: {{sprint.id}}</h4>
+                <p>Proyecto: {{sprint.project.name}}</p>
+            </div>
+            <div class="card-body">
+                <div *ngIf="message" class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons">close</i>
+                    </button>
+                    <span>
+                        <b> Error</b> {{message}}</span>
+                </div>
+                <div class="col-md-12">
+                    <h4><b>Días:</b> {{sprint.days}}</h4>
+                </div>
+                <div class="col-md-12">
+                    <h4><b>Comentario:</b> {{sprint.comment}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" >
+        <div class="card">
+            <app-user-story-list></app-user-story-list>
+        </div>
+    </div>
+  </div>

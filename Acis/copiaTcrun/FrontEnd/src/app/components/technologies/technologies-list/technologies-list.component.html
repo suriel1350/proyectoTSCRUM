@@ -1,0 +1,39 @@
+<div class="row">
+    <div *ngIf="message" class="alert alert-danger col-md-12">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="material-icons">close</i>
+        </button>
+        <span>
+            <b> Error</b> {{message}}</span>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Tecnologías</h4>
+                <p class="card-category">Diferentes tecnologías a utilizar en los proyectos.</p>
+            </div>
+            <div class="card-body">
+                <app-technologies-create (onSubmit)="onSubmit($event)"></app-technologies-create>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let technology of technologies">
+                                <td class="text-primary">{{technology.id}}</td> 
+                                <td>{{technology.name}}</td>
+                                <td>
+                                    <button class="btn btn-danger pull-right text-white text-center" (click)="deleteTechnology(technology.id)"><i class="material-icons">delete</i></button>
+                                    <a class="btn btn-info pull-right text-white text-center" routerLink="/technologies/update/{{technology.id}}"><i class="material-icons">edit</i></a> 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

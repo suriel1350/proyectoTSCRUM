@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title ">{{project.name}}</h4>
+        <p>Id de proyecto: {{project.id}}</p>
+      </div>
+      <div class="card-body">
+        <div *ngIf="message" class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="material-icons">close</i>
+          </button>
+          <span>
+            <b> Error</b> {{message}}</span>
+        </div>
+        <div class="col-md-12">
+          <h4>
+            <b>Visión:</b> {{project.vision}}</h4>
+        </div>
+        <div class="col-md-12">
+          <h4>
+            <b>Fecha de inicio:</b> {{project.begin_date}}</h4>
+        </div>
+        <div class="col-md-12">
+          <h4>
+            <b>Fecha de termino:</b> {{project.end_date}}</h4>
+        </div>
+        <div class="col-md-12">
+          <h4>
+            <b>Antecedentes:</b> {{project.background}}</h4>
+        </div>
+        <div class="col-md-12">
+          <h4>
+            <b>Riesgos:</b> {{project.risks}}</h4>
+        </div>
+        <div class="col-md-12">
+          <h4>
+            <b>Alcance:</b> {{project.reach}}</h4>
+        </div>
+        <div class="col-md-12">
+          <h4>
+            <b>Scrum master:</b> {{project.scrum_master.name}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <app-project-sprint-create></app-project-sprint-create>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <app-project-member></app-project-member>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <app-project-technology></app-project-technology>
+    </div>
+  </div>
+</div>

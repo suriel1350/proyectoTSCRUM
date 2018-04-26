@@ -1,0 +1,29 @@
+{
+  "name": "mocka-example",
+  "version": "1.0.0",
+  "description": "Tests with Mocka js",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha",
+    "start:dev": "nodemon ./bin/www"
+  },
+  "keywords": [
+    "NodeJS",
+    "ExpressJS",
+    "MochaJS",
+    "Testing"
+  ],
+  "author": "Carlos2396",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.5",
+    "nodemon": "^1.17.2",
+    "request": "^2.85.0"
+  }
+}

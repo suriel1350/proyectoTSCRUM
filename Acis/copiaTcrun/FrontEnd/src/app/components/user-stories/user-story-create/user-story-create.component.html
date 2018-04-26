@@ -1,0 +1,40 @@
+<div class="card">
+	<div class="card-header card-header-primary">
+		<h4 class="card-title">Crear una historia</h4>
+		<p class="card-category">Ingresa la informacion de la historia</p>
+	</div>
+	<div class="card-body">
+		<div *ngIf="message" class="alert alert-danger">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<i class="material-icons">close</i>
+			</button>
+			<span>
+				<b> Error</b> {{message}}</span>
+		</div>
+		<form (submit)="createUserStory()">
+			<div class = "form-group">
+				<label class="bmd-label-floating" for="weight">Peso</label>
+				<input class="form-control" type="number" id="weight" name="weight" [(ngModel)]="weight">
+			</div>
+			<div class = "form-group">
+				<label class="bmd-label-floating" for="scrum_board_status">Estado Scrum</label>
+				<input class="form-control" type="number" id="scrum_board_status" name="scrum_board_status" [(ngModel)]="scrum_board_status">
+      </div>
+      <div class = "form-group">
+				<label class="bmd-label-floating" for="description">Descripcion</label>
+				<input class="form-control" type="text" id="description" name="description" [(ngModel)]="description">
+			</div>
+			<div class = "form-group">
+        <label class="bmd-label-floating" for="priority">Prioridad</label>
+        <input class="form-control" type="number" id="priority" name="priority" [(ngModel)]="priority">
+			</div>
+			<div class = "form-group">
+					<label class="bmd-label-floating" for="sprint_id">Sprint id</label>
+					<input class="form-control" type="number" id="sprint_id" name="sprint_id" [(ngModel)]="sprint_id" readonly>
+				</div>
+
+			<button type="submit" class="btn btn-primary pull-right">Agregar</button>
+			<div class="clearfix"></div>
+		</form>
+</div>
+</div>

@@ -1,0 +1,79 @@
+<div class="content-wrapper" style="padding-top: 5%;">
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Crear nuevo proyecto</li>
+    </ol>
+    <hr>
+    <div class="head-page" *ngIf="identity">        
+      <h1>{{titulo}} <button type="button" class="btn btn-primary" [routerLink]="['/']">Volver a Inicio</button></h1> 
+    </div>
+    
+    <div *ngIf="alertMessage">
+      <div>
+        {{alertMessage}}
+      </div>
+    </div>
+    
+    <div *ngIf="identity" class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+      <div>
+          <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                  <label for="nombre">Nombre Proyecto</label>
+                  <input type="email" class="form-control" #nombre="ngModel" name="nombre" id="nombre" [(ngModel)]="proyecto.nombre" required>
+                  <span *ngIf="!nombre.valid && nombre.touched">
+                      El nombre es obligatorio
+                    </span>
+              </div>
+
+              <div class="form-group">
+                  <label for="vision">Visión</label>
+                  <input type="text" class="form-control" #vision="ngModel" name="vision" id="vision" [(ngModel)]="proyecto.vision" required>
+              </div>
+              
+              <div class="form-group">
+                  <label for="background">Background</label>
+                  <textarea type="text" class="form-control" rows="3" #background="ngModel" name="background" id="background" [(ngModel)]="proyecto.background"></textarea> 
+              </div>
+
+              <div class="form-group">
+                  <label for="riesgos">Riesgos</label>
+                  <input type="text" class="form-control" #riesgos="ngModel" name="riesgos" [(ngModel)]="proyecto.riesgos">
+              </div>
+
+              <div class="form-group">
+                  <label for="alcance">Alcance</label>
+                  <input type="text" class="form-control" #alcance="ngModel" name="alcance" [(ngModel)]="proyecto.alcance">
+              </div>
+
+              <div class="form-group">
+                  <label for="fechainicio">Fecha Inicio</label>
+                  <input type="date" class="form-control" #fechainicio="ngModel" name="fechainicio" id="fechainicio" [(ngModel)]="proyecto.fechainicio">
+              </div>
+
+              <div class="form-group">
+                  <label for="fechafinal">Fecha Final</label>
+                  <input type="date" class="form-control" #fechafinal="ngModel" name="fechafinal" [(ngModel)]="proyecto.fechafinal">
+              </div>
+              
+              <div *ngIf="nombre.valid">  
+                <button class="btn btn-primary" type="submit">Crear</button>
+              </div>
+        
+            </form>
+      </div>  
+    </div>
+  </div>
+</div>
+  <!-- /.container-fluid-->
+  <!-- /.content-wrapper-->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+  </a>
+
+

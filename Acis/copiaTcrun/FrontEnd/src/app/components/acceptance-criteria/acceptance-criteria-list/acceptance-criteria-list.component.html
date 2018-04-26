@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-12">
+      <div *ngIf="message && message != 'Criterio de evaluación eliminado exitosamente'" class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <i class="material-icons">close</i>
+          </button>
+          <span>
+              <b> Error</b> {{message}}</span>
+      </div>
+      <div *ngIf="message && message == 'Criterio de evaluación eliminado exitosamente'" class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="material-icons">close</i>
+        </button>
+        <span>
+            <b> Success</b> {{message}}</span>
+    </div>
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">Criterios de aceptación</h4>
+        <p class="card-category">Lista de criterios de aceptación del proyecto</p>
+      </div>
+      <div class="card-body">
+        <a class="btn btn-success pull-right text-white text-center" routerLink="/acceptance-criteria/create/{{user_story_id}}">Agregar criterio de aceptación</a>
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="text-primary">
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let acceptance_criterium of acceptance_criteria">
+                <tr *ngIf="user_story_id == acceptance_criterium.user_story_id">
+                  <td class="text-primary">{{acceptance_criterium.id}}</td>
+                  <td class="text-primary">{{acceptance_criterium.name}}</td>
+                  <td class="text-primary">{{acceptance_criterium.type}}</td>
+                  <td>
+                    <a class="btn btn-danger pull-right text-white text-center" (click)="delete(acceptance_criterium.id)"><i class="material-icons">delete</i></a>
+                    <a class="btn btn-info pull-right text-white text-center" (click)="onSelectEdit(acceptance_criterium.id)"><i class="material-icons">edit</i></a>
+                  </td>
+                </tr>
+              </ng-container> 
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

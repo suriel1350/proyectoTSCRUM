@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-md-12">
+      
+      <div class="card">
+          <div class="card-header card-header-primary">
+              <h4 class="card-title ">Historias de usuario</h4>
+              <p>Historias</p>
+          </div>
+          <div class="card-body">
+                <div *ngIf="message && message != 'Success'" class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <i class="material-icons">close</i>
+                        </button>
+                        <span>
+                            <b> Error</b> {{message}}</span>
+                    </div>
+                    <div *ngIf="message && message == 'Success'" class="alert alert-success">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="material-icons">close</i>
+                      </button>
+                      <span>
+                          <b> Success</b> {{message}}</span>
+                  </div>
+              <a class="btn btn-success pull-right" routerLink="/user-stories/create/{{sprint_id}}">Crear Historia</a>
+              <div class="table-responsive">
+                  <table class="table">
+                      <thead class=" text-primary">
+                          <th>
+                              ID
+                          </th>
+                          <th>
+                              Peso
+                          </th>
+                          <th>
+                              Estado Scrum
+                          </th>
+                          <th>
+                              Descripcion
+                          </th>
+                          <th>
+                              Prioridad
+                          </th>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let user_story of user_stories">
+                              <td>
+                                  {{user_story.id}}
+                              </td>
+                              <td>
+                                  {{user_story.weight}}
+                              </td>
+                              <td>
+                                  {{user_story.scrum_board_status}}
+                              </td>
+                              <td>
+                                  {{user_story.description}}
+                              </td>
+                              <td>
+                                  {{user_story.priority}}
+                              </td>
+                              <td>
+                                    <button class="btn btn-danger pull-right" (click)="deleteUserStory(user_story.id)"><i class="material-icons">delete</i></button>
+                                    <a class="btn btn-info pull-right" routerLink="/user-stories/{{user_story.id}}"><i class="material-icons">info</i></a>
+                                    <button class="btn btn-primary pull-right" routerLink="/user-stories/update/{{user_story.id}}"><i class="material-icons">edit</i></button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

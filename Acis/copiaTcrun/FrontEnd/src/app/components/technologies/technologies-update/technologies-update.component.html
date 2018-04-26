@@ -1,0 +1,39 @@
+<div class="row">
+    <div *ngIf="message" class="alert alert-danger col-md-12">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="material-icons">close</i>
+        </button>
+        <span>
+            <b> Error</b> {{message}}</span>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Tecnologías</h4>
+                <p class="card-category">Diferentes tecnologías a utilizar en los proyectos.</p>
+            </div>
+            <div class="card-body">
+                <div class="col-md-12">
+                    <div *ngIf="message" class="alert alert-danger col-md-12">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <i class="material-icons">close</i>
+                        </button>
+                        <span><b> Error</b> {{message}}</span>
+                    </div>
+                
+                    <form (submit)="updateTechnology()">
+                        <div class="pull-right col-md-6">
+                            <button type="submit" class="btn btn-success">Actualizar tecnología</button>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="bmd-label-floating" for="name">Nombre</label>
+                                <input class="form-control" type="text" id="name" name="name" [(ngModel)]="technology.name">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

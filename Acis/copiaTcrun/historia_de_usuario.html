@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<title>Historia de usuario</title>
+	<meta charset="utf-8">
+	<div>
+		<div>
+			<input id="button" type="button" value="Log out">
+		</div>
+		<center>
+			<div>
+				<h3>Sala de votaciones</h3>
+			</div>
+			<div>
+				<h1>Historia de usuario</h1>
+			</div>
+			<div>
+				<h4>Selecciona un número</h4>
+			</div>
+		</center>
+	</div>
+
+	<!-- For the lateral Menu -->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body {
+			font-family: "Lato", sans-serif;
+		}
+
+		#button {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+		
+		.sidenav {
+			height: 100%;
+			width: 0;
+			position: fixed;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			background-color: rgb(1, 5, 241);
+			overflow-x: hidden;
+			transition: 0.5s;
+			padding-top: 60px;
+		}
+
+		.sidenav a {
+			padding: 8px 8px 8px 32px;
+			text-decoration: none;
+			font-size: 25px;
+			color: #ffffff;
+			display: block;
+			transition: 0.3s;
+		}
+
+		.sidenav a:hover {
+			color: #f1f1f1;
+		}
+
+		.sidenav .closebtn {
+			position: absolute;
+			top: 0;
+			right: 25px;
+			font-size: 36px;
+			margin-left: 50px;
+		}
+
+		@media screen and (max-height: 450px) {
+			.sidenav {
+				padding-top: 15px;
+			}
+			.sidenav a {
+				font-size: 18px;
+			}
+		}
+
+		.button-wrapper {
+			text-align: center;
+			display: inline-block;
+			margin: 10px;
+		}
+
+		button {
+			padding: 10px;
+			background-color: rgb(1, 5, 241);
+			color: white;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<!-- Sidebar -->
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a href="#">Option1</a>
+		<a href="#">Option2</a>
+		<a href="#">Option3</a>
+		<a href="#">Option4</a>
+	</div>
+
+	<!-- Button to open the sidebar -->
+	<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menú</span>
+
+	<script>
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "250px";
+		}
+
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
+
+	<div>
+		<center>
+			<div class="button-wrapper">
+				<p>Poco esfuerzo</p>
+				<button onclick="numberSelected('1')"  type="button">1</button>
+			</div>
+			<div class="button-wrapper">
+				<button onclick="numberSelected('2')" type="button">2</button>
+			</div>
+			<div class="button-wrapper">
+				<button onclick="numberSelected('3')"  type="button">3</button>
+			</div>
+			<div class="button-wrapper">
+				<button onclick="numberSelected('5')"  type="button">5</button>
+			</div>
+			<div class="button-wrapper">
+				<button onclick="numberSelected('8')"  type="button">8</button>
+			</div>
+			<div class="button-wrapper">
+				<button onclick="numberSelected('13')"  type="button">13</button>
+			</div>
+			<div class="button-wrapper">
+				<button onclick="numberSelected('21')"  type="button">21</button>
+			</div>
+			<div class="button-wrapper">
+				<p>Imposible</p>
+				<button onclick="numberSelected('34')"  type="button">34</button>
+			</div>
+		</center>
+	</div>
+	<div>
+		<center>
+			<button>Detener votación</button>
+			<button>Votar</button>
+		</center>
+		<center><p align id="demo"></p></center>
+
+		<script>
+				function numberSelected(number) {
+					document.getElementById("demo").innerHTML = number;
+				}
+				</script>
+	</div>
+	<div>
+
+		<center>
+			<button>Regresar</button>
+		</center>
+	</div>
+</body>
+
+</html>

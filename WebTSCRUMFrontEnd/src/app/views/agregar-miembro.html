@@ -1,0 +1,68 @@
+<div class="content-wrapper" style="padding-top: 5%;">
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Agregar miembros</li>
+    </ol>
+    <hr>
+    <div class="head-page" *ngIf="identity">      	
+      <h1>{{titulo}} <button type="button" class="btn btn-primary" [routerLink]="['/mis-proyectos',identity.id]">Volver a Proyectos</button></h1>	
+    </div>
+    
+    <div *ngIf="alertMessage">
+      <div>
+        {{alertMessage}}
+      </div>
+    </div>
+    
+    <div class="clearfix"></div>
+    
+    <div class="col-md-3">Buscar:
+      <input type="text" [(ngModel)]="term" placeholder="Buscar..." class="form-control" />
+    </div>
+    
+    <table class="table table-hover" *ngIf="identity" style="background-color: white;" [mfData]="user" #mf="mfDataTable" [mfRowsOnPage]="5">
+      <thead>
+        <tr>      
+          <th class="text-center" scope="col">
+            <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
+          </th>
+          <th class="text-center" scope="col">
+            <mfDefaultSorter by="matricula">Matricula</mfDefaultSorter>
+          </th>
+          <th class="text-center" scope="col">
+            <mfDefaultSorter by="carrera">Carrera</mfDefaultSorter>
+          </th>
+          <th class="text-center" scope="col">Opciones</th>      
+        </tr>
+      </thead>
+      <tbody *ngFor="let use of mf.data|filter:term">
+        <tr>
+          <td class="text-center" scope="row">{{use.nombre}}</td>      
+          <td class="text-center">{{use.matricula}}</td>
+          <td class="text-center">{{use.carrera}}</td>
+          <td class="text-center">        
+            <button (click)="addMiembro(use.id)">Agregar a Proyecto</button>
+          </td>      
+        </tr> 
+      </tbody>
+      <tfoot>
+        <tr>
+            <td colspan="4">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+            </td>
+        </tr>
+        </tfoot>
+    </table> 
+  </div>
+  <!-- /.container-fluid-->
+</div>
+  <!-- /.content-wrapper-->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+  </a>
