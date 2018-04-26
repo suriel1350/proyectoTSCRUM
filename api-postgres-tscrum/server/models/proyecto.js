@@ -38,6 +38,20 @@ module.exports = (sequelize, DataTypes) => {
       as: 'idproyectos',
     });
 
+    Proyectos.hasMany(models.Sprint, {
+      foreignKey: 'project_id',
+      as: 'sprints',
+      onDelete: 'Cascade'
+    })
+
+    Proyectos.belongsToMany(models.Technology, {
+      through: 'Project_technologies',
+      foreignKey: 'project_id',
+      //otherKey: 'technology_id'
+      as: 'technologies',
+      onDelete: 'CASCADE',
+    })
+
   };
 
   return Proyectos;

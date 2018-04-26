@@ -1,6 +1,8 @@
 const Proyectos = require('../models').Proyectos; 
 const Miembros = require('../models').Miembros; 
 const DetalleProyectos = require('../models').DetalleProyectos;
+const Technology = require('../models').Technology;
+const Sprint = require('../models').Sprint;
 var fs = require('fs');
 var path = require('path');
 var bcrypt = require('bcrypt-nodejs');
@@ -262,6 +264,61 @@ function getProjectsToMe(req, res){
 	    .catch(error => res.status(400).send(error));	
 }
 
+function getProjectsAndTechno(req, res){	
+	return Proyectos
+	    .findAll({
+	      include: [{
+            model: Technology,
+            as: 'technologies',
+            through: {
+                attributes: ['version']
+            },
+            required: false
+          }]	      
+	    })
+	    .then(projectsTecs => res.status(200).send(projectsTecs))
+	    .catch(error => res.status(400).send(error));	
+}
+
+function getProjectAndTechno(req, res){
+	var projectId = req.params.idProject;
+	
+	return Proyectos
+	    .findAll({
+	      include: [{
+                model: Technology,
+                as: 'technologies',
+                through: {
+                    attributes: ['version']
+                },
+                required: false
+            }],
+	      where: {
+			id: projectId,
+		  }
+	    })
+	    .then(projects => res.status(200).send(projects))
+	    .catch(error => res.status(400).send(error));	
+}
+
+function getProjectAndSprint(req, res){
+	var projectId = req.params.idProject;
+	
+	return Proyectos
+	    .findAll({
+	      include: [{
+                model: Sprint,
+                as: 'sprints',
+                required: false
+            }],
+	      where: {
+			id: projectId,
+		  }
+	    })
+	    .then(projectSprints => res.status(200).send(projectSprints))
+	    .catch(error => res.status(400).send(error));	
+}
+
 module.exports = {
 	saveProject,
 	agregaMiembros,
@@ -270,4 +327,7 @@ module.exports = {
 	deleteMiembro,
 	updateProject,
 	getProjectsToMe,
+	getProjectsAndTechno,
+	getProjectAndTechno,
+	getProjectAndSprint,
 };

@@ -348,6 +348,7 @@ function allProjects(req, res){
 		        model: DetalleProyectos,
 		    	as: 'idproyectos',
 		     }],
+		    
 	      }],
 	      where: {
 			id: userId,
