@@ -19,6 +19,10 @@ import { RegistrarMiembroComponent } from './components/registrar-miembro.compon
 import { ProjectUpdateComponent } from './components/proyecto-update.component';
 import { MiembrosGetComponent } from './components/miembros-list.component';
 import { MiembroEditComponent } from './components/miembros-edit.component';
+import { TecnoAddComponent } from './components/add-tecnologia.component';
+import { SprintDetallesComponent } from './components/detalles-sprint.component';
+import { UserStoryCreateComponent } from './components/create-user-story.component';
+import { UserStoryEditComponent } from './components/editar-user-story.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { MiembroEditComponent } from './components/miembros-edit.component';
     RegistrarMiembroComponent,
     ProjectUpdateComponent,
     MiembrosGetComponent,
-    MiembroEditComponent
+    MiembroEditComponent,
+    TecnoAddComponent,
+    SprintDetallesComponent,
+    UserStoryCreateComponent,
+    UserStoryEditComponent
   ],
   imports: [
     BrowserModule,

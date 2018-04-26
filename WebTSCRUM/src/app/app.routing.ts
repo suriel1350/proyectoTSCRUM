@@ -13,6 +13,10 @@ import { RegistrarMiembroComponent } from './components/registrar-miembro.compon
 import { ProjectUpdateComponent } from './components/proyecto-update.component';
 import { MiembrosGetComponent } from './components/miembros-list.component';
 import { MiembroEditComponent } from './components/miembros-edit.component';
+import { TecnoAddComponent } from './components/add-tecnologia.component';
+import { SprintDetallesComponent } from './components/detalles-sprint.component';
+import { UserStoryCreateComponent } from './components/create-user-story.component';
+import { UserStoryEditComponent } from './components/editar-user-story.component';
  
 const appRoutes: Routes = [
 	{path: '', component: HomeComponent},
@@ -21,9 +25,13 @@ const appRoutes: Routes = [
 	{path: 'cambiar-password', component: UserEditPasswordComponent},
 	{path: 'mis-proyectos/:idUser', component: ProyectosComponent},
 	{path: 'proyecto/crear/:idUser', component: ProyectoCreateComponent},
+	{path: 'crear-historia/:idSprint', component: UserStoryCreateComponent},
 	{path: 'detalles-proyecto/:idProject', component: ProyectoDetallesComponent},
+	{path: 'detalles-sprint/:idSprint', component: SprintDetallesComponent},
 	{path: 'agregar-miembro/:idProject', component: MiembroAddComponent},
+	{path: 'agregar-tecnos/:idProject', component: TecnoAddComponent},
 	{path: 'update-project/:idProject', component: ProjectUpdateComponent},
+	{path: 'update-user-history/:idUserStory', component: UserStoryEditComponent},
 	{path: 'registrar-miembro/:idUser', component: RegistrarMiembroComponent},
 	{path: 'editar-miembro/:idUser', component: MiembroEditComponent},
 	{path: 'ver-miembros', component: MiembrosGetComponent},

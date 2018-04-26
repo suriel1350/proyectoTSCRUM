@@ -33,6 +33,16 @@ export class ProyectoService{
 		return this._http.get(this.url+'proyectos/'+id, options).map(res => res.json());
 	}
 
+	getTecnos(token){
+		let headers = new Headers({
+			'Content-Type':'application/json',
+			'Authorization':token
+		});
+
+		let options = new RequestOptions({ headers: headers });
+		return this._http.get(this.url+'technologies', options).map(res => res.json());
+	}
+
 	getProyecto(token, id){
 		let headers = new Headers({
 			'Content-Type':'application/json',
@@ -41,6 +51,56 @@ export class ProyectoService{
 
 		let options = new RequestOptions({ headers: headers });
 		return this._http.get(this.url+'proyecto/get/'+id, options).map(res => res.json());
+	}
+
+	getUserStory(token, id){
+		let headers = new Headers({
+			'Content-Type':'application/json',
+			'Authorization':token
+		});
+
+		let options = new RequestOptions({ headers: headers });
+		return this._http.get(this.url+'user-stories/'+id, options).map(res => res.json());
+	}
+
+	getProyectoAndTecno(token, id){
+		let headers = new Headers({
+			'Content-Type':'application/json',
+			'Authorization':token
+		});
+
+		let options = new RequestOptions({ headers: headers });
+		return this._http.get(this.url+'proyecto-tecno/get/'+id, options).map(res => res.json());	
+	}
+
+	getProyectoAndSprint(token, id){
+		let headers = new Headers({
+			'Content-Type':'application/json',
+			'Authorization':token
+		});
+
+		let options = new RequestOptions({ headers: headers });
+		return this._http.get(this.url+'proyecto-sprint/'+id, options).map(res => res.json());	
+	}
+
+	getSprintDetails(token, id){
+		let headers = new Headers({
+			'Content-Type':'application/json',
+			'Authorization':token
+		});
+
+		let options = new RequestOptions({ headers: headers });
+		return this._http.get(this.url+'sprints/'+id, options).map(res => res.json());	
+	}
+
+	getProyectosAndTecnos(token){
+		let headers = new Headers({
+			'Content-Type':'application/json',
+			'Authorization':token
+		});
+
+		let options = new RequestOptions({ headers: headers });
+		return this._http.get(this.url+'proyectos-technos', options).map(res => res.json());	
 	}
 
 	getMyProjects(token, id){
@@ -61,6 +121,26 @@ export class ProyectoService{
 
 		let options = new RequestOptions({ headers: headers });
 		return this._http.delete(this.url+'proyecto/eliminar/'+id, options).map(res => res.json());
+	}
+
+	deleteUserStory(token, id){
+		let headers = new Headers({
+			'Content-Type':'application/json',
+			'Authorization':token
+		});
+
+		let options = new RequestOptions({ headers: headers });
+		return this._http.delete(this.url+'user-stories/'+id, options).map(res => res.json());
+	}
+
+	deleteSprint(token, id){
+		let headers = new Headers({
+			'Content-Type':'application/json',
+			'Authorization':token
+		});
+
+		let options = new RequestOptions({ headers: headers });
+		return this._http.delete(this.url+'sprints/'+id, options).map(res => res.json());
 	}
 
 	deleteMiembro(token, idPro, idMie){
@@ -85,6 +165,18 @@ export class ProyectoService{
 						 .map(res => res.json());	
 	}
 
+	addSprint(token, dataSprint){
+		let params = JSON.stringify(dataSprint);
+
+		let headers = new Headers({
+			'Content-Type':'application/json',
+			'Authorization':token
+		});
+
+		return this._http.post(this.url+'sprints', params, {headers: headers})
+						 .map(res => res.json());	
+	}
+
 	addMiembros(token, detalles_pro){
 		let params = JSON.stringify(detalles_pro);
 
@@ -97,6 +189,29 @@ export class ProyectoService{
 						 .map(res => res.json());	
 	}
 
+	addTecnos(data){
+		let params = JSON.stringify(data);
+
+		let headers = new Headers({
+			'Content-Type':'application/json'
+		});
+
+		return this._http.post(this.url+'project-technology', params, {headers: headers})
+						 .map(res => res.json());	
+	}
+
+	addUserStory(token, data){
+		let params = JSON.stringify(data);
+
+		let headers = new Headers({
+			'Content-Type':'application/json',
+			'Authorization': token
+		});
+
+		return this._http.post(this.url+'user-stories', params, {headers: headers})
+						 .map(res => res.json());	
+	}
+
 	updateProyecto(token, id, project_to_update){
 		let params = JSON.stringify(project_to_update);
 
@@ -106,5 +221,16 @@ export class ProyectoService{
 			});
 
 		return this._http.put(this.url+'update-project/'+id, params, {headers: headers}).map(res => res.json());	
+	}
+
+	updateUserStory(token, id, user_story_to_update){
+		let params = JSON.stringify(user_story_to_update);
+
+		let headers = new Headers({
+				'Content-Type':'application/json',
+				'Authorization': token
+			});
+
+		return this._http.put(this.url+'user-stories/'+id, params, {headers: headers}).map(res => res.json());	
 	}
 }

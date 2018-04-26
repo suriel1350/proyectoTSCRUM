@@ -6,6 +6,9 @@ import { UserService } from '../services/user.service';
 import { ProyectoService } from '../services/proyecto.service';
 import { Proyecto } from '../models/proyecto';
 import { User } from '../models/miembro';
+import { Technology } from '../models/technology';
+import { Sprint } from '../models/sprint';
+import { SprintID } from '../models/sprintID';
 
 @Component({
   selector: 'get-proyecto',
@@ -19,10 +22,14 @@ export class ProyectoDetallesComponent implements OnInit{
 	public identity; 
 	public token;
 	public url: string;
-	public alertMessage;	
+	public alertMessage;
+	public alertMessageSprint;
 	public miembros: User[] = [];
 	public miembrosAux: User[] = [];
+	public tecnologias: Technology[] = [];
 	public rol: string;
+	public sprint: Sprint;
+	public sprintsProject: SprintID[] = [];	
 
 	constructor(
 		private _route: ActivatedRoute,
@@ -35,12 +42,113 @@ export class ProyectoDetallesComponent implements OnInit{
   		this.token = this._userService.getToken();
   		this.url = GLOBAL.url;
 		this.project = new Proyecto('','','','','','','','','');  		
+		this.sprint = new Sprint(0,'','');
 	}
 
 	ngOnInit(){
-		console.log('proyectos-list.component cargado');
+		console.log('detalles-proyecto.component cargado');
 
 		this.getProyecto();
+		this.getProyectoAndTecno();
+		this.getSprints();
+	}
+
+	getSprints(){
+		this._route.params.forEach((params: Params) => {		
+			let idProject = params['idProject'];
+
+			 
+				this._proyectoService.getProyectoAndSprint(this.token, idProject).subscribe(
+					response => {	
+						let indice = null;
+						//console.log(response[0].sprints);
+						for (var i in response[0].sprints) {
+							//console.log(response[0].sprints[i].comment);
+							let aux = new SprintID(response[0].sprints[i].id, response[0].sprints[i].days, response[0].sprints[i].comment, response[0].sprints[i].project_id);
+							console.log(aux);							
+							this.sprintsProject.push(aux);
+						}	
+					},
+					error => {
+						var errorMessage = <any>error;
+
+			  			if(errorMessage != null){
+			  				var body = JSON.parse(error._body);
+			  				this.alertMessage = body.message;
+			  				
+			  				console.log(error);
+			  			}
+					}
+				);		
+			
+		});
+	}
+
+	getProyectoAndTecno(){
+		this._route.params.forEach((params: Params) => {		
+			let idProject = params['idProject'];
+
+			 
+				this._proyectoService.getProyectosAndTecnos(this.token).subscribe(
+					response => {	
+						let indice = null;
+						
+						for (var i in response) {
+							//console.log(response[i].id);	
+							if(response[i].id == idProject){
+								indice = i;
+							}
+						}	
+						//console.log(response[0].technologies);
+						for (var i in response[indice].technologies) {
+							let aux = new Technology(response[indice].technologies[i].id, response[indice].technologies[i].name, response[indice].technologies[i].Project_technologies.version)
+							this.tecnologias.push(aux);
+						}
+					},
+					error => {
+						var errorMessage = <any>error;
+
+			  			if(errorMessage != null){
+			  				var body = JSON.parse(error._body);
+			  				this.alertMessage = body.message;
+			  				
+			  				console.log(error);
+			  			}
+					}
+				);		
+			
+		});
+	}
+
+	createSprint(){
+		
+		if(this.sprint.days < 0){
+			this.alertMessageSprint = "No puedes introducir días negativos";
+		}else{
+			this._route.params.forEach((params: Params) => {		
+				let idProject = params['idProject'];
+
+				this.sprint.project_id = idProject;					
+
+				this._proyectoService.addSprint(this.token, this.sprint).subscribe(
+					response => {					
+						console.log(response);
+						this.sprintsProject = [];
+						this.getSprints();
+					},
+					error => {
+						var errorMessage = <any>error;
+
+			  			if(errorMessage != null){
+			  				var body = JSON.parse(error._body);
+			  				this.alertMessage = body.message;
+			  				
+			  				console.log(error);
+			  			}
+					}
+				);		
+			});
+		}
 	}
 
 	getProyecto(){							
@@ -154,5 +262,31 @@ export class ProyectoDetallesComponent implements OnInit{
 				}
 			);		
 		});
+	}
+
+	eliminarSprint(idSp){				
+
+		this._proyectoService.deleteSprint(this.token, idSp).subscribe(
+			response => {					
+				if(!response){
+					this._router.navigate(['/']);
+				}else{						
+					console.log(response);
+					//this._router.navigate(['/mis-proyectos',this.identity.id]);
+					this.sprintsProject = [];
+					this.getSprints();
+				}
+			},
+			error => {
+				var errorMessage = <any>error;
+
+	  			if(errorMessage != null){
+	  				var body = JSON.parse(error._body);
+	  				this.alertMessage = body.message;
+	  				
+	  				console.log(error);
+	  			}
+			}
+		);		
 	}
 }

@@ -1,0 +1,33 @@
+<div class="head-page" *ngIf="identity">      	
+	<h5>{{titulo}} <button [routerLink]="['/mis-proyectos',identity.id]">Volver a Proyectos</button></h5>	
+</div>
+
+<div *ngIf="alertMessage">
+	<div>
+		{{alertMessage}}
+	</div>
+</div>
+
+<div class="clearfix"></div>
+
+        <form (submit)="addTecno()">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    <div class="form-group">
+                        <label class="bmd-label-floating" for="technology_id">Tecnología</label>
+                        <select class="form-control" id="technology_id" name="technology_id" [(ngModel)]="technology_id">
+                            <option *ngFor="let technology of tecnologias" value="{{technology.id}}">{{technology.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    <div class="form-group">
+                        <label class="bmd-label-floating" for="version">Versión</label>
+                        <input class="form-control" type="number" id="version" name="version" [(ngModel)]="version">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <button type="submit" class="btn btn-success">Agregar tecnología</button>
+                </div>
+            </div>
+        </form>

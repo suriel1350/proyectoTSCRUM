@@ -119,4 +119,96 @@
 		  
 		</div>  
 	</div>	
+
+	<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" >
+		<div>
+		  <div>
+		    <h3 class="text-center">Tecnologías:</h3>
+		  </div>		  	
+
+			<div class="text-center">
+				<table class="table table-hover table-responsive" style="background-color: white;">
+				  <thead>
+				    <tr>
+				      <th class="text-center" scope="col">ID</th>					    	
+				      <th class="text-center" scope="col">Nombre</th>
+				      <th class="text-center" scope="col">Versión</th>
+				      <th class="text-center" scope="col">Opciones</th>
+				    </tr>
+				  </thead>
+				  <tbody *ngFor="let tec of tecnologias">
+				    <tr> 
+				      <th class="text-center" scope="row">{{tec.id}}</th>
+				      <td class="text-center">{{tec.name}}</td>
+				      <td class="text-center">{{tec.version}}</td>					      
+				      <td class="text-center">
+						<button>Eliminar</button>        	
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+		 	</div> 
+		  
+		</div>  
+	</div>	
+
+	<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" >
+		<div>
+		  <div>
+		    <h3 class="text-center">Sprints del Proyecto:</h3>
+		  </div>
+		  	
+		  	<div *ngIf="alertMessageSprint">
+				<div>
+					{{alertMessageSprint}}
+				</div>
+			</div>
+		  	
+			<form (submit)="createSprint()">
+                <div class="row">
+                    <div class="col-md-4" >
+                        <div class="form-group">
+                            <label>Días</label>
+                            <input class="form-control" type="number" min="1" id="days" name="days" [(ngModel)]="sprint.days">
+                        </div>
+                    </div>
+                    <div class="col-md-4" >
+                        <div class="form-group">
+                            <label>Comentario</label>
+                            <input class="form-control" type="text" id="comment" name="comment" [(ngModel)]="sprint.comment">
+                        </div>
+                    </div>
+                    <div class="col-md-4" >
+                        <input class="form-control" type="hidden" id="project_id" name="prject_id">
+                        <button type="submit" class="btn btn-success pull-right"><i>add box</i></button>
+                    </div>
+                </div>
+            </form>
+
+			  <div class="text-center">
+					<table class="table table-hover table-responsive" style="background-color: white;">
+					  <thead>
+					    <tr>
+					      <th class="text-center" scope="col">ID</th>					    	
+					      <th class="text-center" scope="col">Días</th>
+					      <th class="text-center" scope="col">Comentarios</th>
+					      <th class="text-center" scope="col">Opciones</th>
+					    </tr>
+					  </thead>
+					  <tbody *ngFor="let sprint of sprintsProject; let i =index">
+					    <tr> 
+					      <th class="text-center" scope="row">{{sprint.id}}</th>
+					      <td class="text-center">{{sprint.days}}</td>
+					      <td class="text-center">{{sprint.comment}}</td>					      
+					      <td class="text-center">
+							<button [routerLink]="['/detalles-sprint',sprint.id]">Detalles</button>
+							<button (click)="eliminarSprint(sprint.id)">Eliminar</button>
+					      </td>
+					    </tr>
+					  </tbody>
+					</table>
+			  </div> 
+		  
+		</div>  
+	</div>	
 </div>
