@@ -1,11 +1,18 @@
-<div *ngIf="identity" class="col-lg-8 col-lg-offset-2">
-	<div>
-		<h1>Bienvenido a TSCRUM {{identity.nombre}}</h1>
-		<p>Crea Proyectos y Diviertete</p>
-		<p>
-			<button [routerLink]="['/mis-proyectos',identity.id]" role="button">Ver mis proyectos</button> 
-			<button [routerLink]="['/proyecto/crear/',identity.id]" role="button">Crear Proyecto</button> 
-			
-		</p>
+<div class="content-wrapper" style="padding-top: 8%;">
+    <div class="container-fluid">
+		<div *ngIf="identity" class="col-lg-12 col-lg-offset-2">
+			<div>
+				<h1>Bienvenido a TCRUM {{identity.nombre}}</h1>
+				<p>Crea Proyectos y Diviertete</p>
+				<p>
+					<button type="button" class="btn btn-primary" [routerLink]="['/mis-proyectos',identity.id]" role="button">Ver mis proyectos</button> 
+					<button type="button" class="btn btn-success" [routerLink]="['/proyecto/crear/',identity.id]" role="button">Crear Proyecto</button> 
+					
+				</p>
+			</div>
+			<div class="col-lg-12" class="text-center">
+				<img src="http://prepamet.tol.itesm.mx/Logotipo_Vertical_Azul.png" class="img-thumbnail img-responsive center-block" style="margin: 0 auto;">
+			</div>
+		</div>	
 	</div>
 </div>

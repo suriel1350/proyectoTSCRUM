@@ -1,50 +1,62 @@
-<div class="head-page" *ngIf="identity">        
-  <h5>{{titulo}} <button [routerLink]="['/detalles-sprint',sprintId]">Volver a Sprint</button></h5> 
-</div>
+<div class="content-wrapper" style="padding-top: 8%;">
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">{{titulo}}</li>
+    </ol>
 
-<div *ngIf="alertMessage">
-  <div>
-    {{alertMessage}}
-  </div>
-</div>
-
-<div *ngIf="identity" class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
-  <div>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
-      <p>
-        <label>Descripcion</label>
-        <input type="text" #description="ngModel" name="description" [(ngModel)]="user_history.description" required>
-        <span *ngIf="!description.valid && description.touched">
-          La descripcion es obligatoria
-        </span>
-      </p>
-      <p>
-        <label>Prioridad</label>
-        <input required type="number" #priority="ngModel" name="priority" [(ngModel)]="user_history.priority">        
-        <span *ngIf="!priority.valid && priority.touched">
-          La prioridad es obligatoria
-        </span>
-      </p>
-      <p>
-        <label>Scrum Board Status</label>
-        <input type="number" #scrum_board_status="ngModel" name="scrum_board_status" [(ngModel)]="user_history.scrum_board_status" required>
-        <span *ngIf="!scrum_board_status.valid && scrum_board_status.touched">
-          El Scrum status es obligatorio
-        </span>
-      </p>
-      <p>
-        <label>Peso</label>
-        <input type="number" #weight="ngModel" name="weight" [(ngModel)]="user_history.weight" required>        
-        <span *ngIf="!weight.valid && weight.touched">
-          El peso es obligatorio
-        </span>
-      </p>      
-      
-      <div *ngIf="description.valid && priority.valid && weight.valid && scrum_board_status.valid">  
-        <input type="submit" value="Crear historia de usuario">
+    <div class="head-page" *ngIf="identity">        
+      <button type="button" class="btn btn-primary" [routerLink]="['/detalles-sprint',sprintId]">Volver a Sprint</button>
+    </div>
+    
+    <div *ngIf="alertMessage">
+      <div>
+        {{alertMessage}}
       </div>
-    </form>
-  </div>  
+    </div>
+    
+    <div *ngIf="identity" class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12" style="padding-top: 5%;">
+      <div>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="descripcion">Descripcion</label>
+            <input type="text" class="form-control" #description="ngModel" name="description" [(ngModel)]="user_history.description" required>
+            <span *ngIf="!description.valid && description.touched">
+              La descripcion es obligatoria
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="priority">Prioridad</label>
+            <input required type="number" class="form-control" #priority="ngModel" name="priority" [(ngModel)]="user_history.priority">        
+            <span *ngIf="!priority.valid && priority.touched">
+              La prioridad es obligatoria
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="scrum_board_status">Scrum Board Status</label>
+            <input type="number" class="form-control" #scrum_board_status="ngModel" name="scrum_board_status" [(ngModel)]="user_history.scrum_board_status" required>
+            <span *ngIf="!scrum_board_status.valid && scrum_board_status.touched">
+              El Scrum status es obligatorio
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="weight">Peso</label>
+            <input type="number" class="form-control" #weight="ngModel" name="weight" [(ngModel)]="user_history.weight" required>        
+            <span *ngIf="!weight.valid && weight.touched">
+              El peso es obligatorio
+            </span>
+          </div>      
+          
+          <div *ngIf="description.valid && priority.valid && weight.valid && scrum_board_status.valid">  
+            <input class="btn btn-primary" type="submit" value="Crear historia de usuario">
+          </div>
+        </form>
+      </div>  
+    </div>
+  </div>
 </div>
 
 

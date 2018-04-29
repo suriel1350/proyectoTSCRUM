@@ -1,80 +1,71 @@
-<div class="head-page" *ngIf="identity">      	
-	<h4>{{titulo}} <button [routerLink]="['/detalles-proyecto',sprintsProject.project_id]">Volver a Proyectos</button></h4>	
-</div>
+<div class="content-wrapper" style="padding-top: 8%;">
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">{{titulo}}</li>
+		</ol>
 
-<div *ngIf="alertMessage">
-	<div>
-		{{alertMessage}}
-	</div>
-</div>
-
-	<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" >
-		<div>
-		  <div>
-		    <h3 class="text-center">Sprint ID: {{sprintsProject.id}}</h3>
-		    <h3 class="text-center">Proyecto: {{project.nombre}}</h3>
-		  </div>
-		  
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		<div class="head-page" *ngIf="identity">      	
+			<button type="button" class="btn btn-primary" [routerLink]="['/detalles-proyecto',sprintsProject.project_id]">Volver a Proyectos</button>
+		</div>
+		
+		<div *ngIf="alertMessage">
 			<div>
-			  <div>
-			    <h3 class="text-center">Días: {{sprintsProject.days}}</h3>
-			  </div>
-			  <div>
-			    
-			  </div>
-			</div>  
-		</div>	
-
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<div>
-			  <div>
-			    <h3 class="text-center">Comentario: {{sprintsProject.comment}}</h3>
-			  </div>
-			  <div>
-			    
-			  </div>
-			</div>  
-		</div>	
-		  
-		</div>  
+				{{alertMessage}}
+			</div>
+		</div>
+		
+			<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" style="padding-top: 5%;">
+				<div>
+					<div>
+						<h3>Sprint ID: {{sprintsProject.id}}</h3>
+						<h3>Proyecto: {{project.nombre}}</h3>
+						<h3>Días: {{sprintsProject.days}}</h3>
+						<h3>Comentario: {{sprintsProject.comment}}</h3>
+					</div>			
+				</div>  
+			</div>
+		
+			<div class="clearfix"></div>
+		
+			<div class="col-lg-9 col-lg-offset-2 col-md-9 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" style="padding-top: 5%;">
+				<div>
+					<div>
+						<h3 class="text-center">Historias de Usuario: <button type="button" class="btn btn-success" [routerLink]="['/crear-historia',sprintsProject.id]">Crear Historia</button></h3>
+					</div>
+					
+						<div class="text-center">
+							<table class="table table-hover table-responsive" style="background-color: white;">
+								<thead>
+									<tr>
+										<th class="text-center" scope="col">ID</th>
+										<th class="text-center" scope="col">Peso</th>
+										<th class="text-center" scope="col">Estado Scrum</th>
+										<th class="text-center" scope="col">Descripción</th>
+										<th class="text-center" scope="col">Prioridad</th>
+										<th class="text-center" scope="col">Opciones</th>
+									</tr>
+								</thead>
+								<tbody *ngFor="let us_his of user_history">
+									<tr> 
+										<th class="text-center" scope="row">{{us_his.id}}</th>
+										<td class="text-center">{{us_his.weight}}</td>
+										<td class="text-center">{{us_his.scrum_board_status}}</td>
+										<td class="text-center">{{us_his.description}}</td>
+										<td class="text-center">{{us_his.priority}}</td>
+										<td class="text-center">
+									<button type="button" class="btn btn-primary" [routerLink]="['/update-user-history',us_his.id]">Editar</button>
+									<button type="button" class="btn btn-danger" (click)="eliminarUserStory(us_his.id)">Eliminar</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div> 
+					
+				</div>  
+			</div>
 	</div>
-
-	<div class="clearfix"></div>
-
-	<div class="col-lg-9 col-lg-offset-2 col-md-9 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" >
-		<div>
-		  <div>
-		    <h3 class="text-center">Historias de Usuario: <button [routerLink]="['/crear-historia',sprintsProject.id]">Crear Historia</button></h3>
-		  </div>
-		  
-			  <div class="text-center">
-					<table class="table table-hover table-responsive" style="background-color: white;">
-					  <thead>
-					    <tr>
-					      <th class="text-center" scope="col">ID</th>
-					      <th class="text-center" scope="col">Peso</th>
-					      <th class="text-center" scope="col">Estado Scrum</th>
-					      <th class="text-center" scope="col">Descripción</th>
-					      <th class="text-center" scope="col">Prioridad</th>
-					      <th class="text-center" scope="col">Opciones</th>
-					    </tr>
-					  </thead>
-					  <tbody *ngFor="let us_his of user_history">
-					    <tr> 
-					      <th class="text-center" scope="row">{{us_his.id}}</th>
-					      <td class="text-center">{{us_his.weight}}</td>
-					      <td class="text-center">{{us_his.scrum_board_status}}</td>
-					      <td class="text-center">{{us_his.description}}</td>
-					      <td class="text-center">{{us_his.priority}}</td>
-					      <td class="text-center">
-							<button [routerLink]="['/update-user-history',us_his.id]">Editar</button>
-							<button (click)="eliminarUserStory(us_his.id)">Eliminar</button>
-					      </td>
-					    </tr>
-					  </tbody>
-					</table>
-			  </div> 
-		  
-		</div>  
-	</div>		
+</div>		

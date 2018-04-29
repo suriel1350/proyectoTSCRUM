@@ -1,214 +1,225 @@
-<div class="head-page" *ngIf="identity">      	
-	<h4>{{titulo}} <button [routerLink]="['/mis-proyectos',identity.id]">Volver a Proyectos</button></h4>	
-</div>
+<div class="content-wrapper" style="padding-top: 8%;">
+		<div class="container-fluid">
+				<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+							<a href="#">Dashboard</a>
+						</li>
+						<li class="breadcrumb-item active">{{titulo}}</li>
+				</ol>
 
-<div *ngIf="alertMessage">
-	<div>
-		{{alertMessage}}
-	</div>
-</div>
-
-<div *ngIf="identity">
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-		<div>
-		  <div>
-		    <h3>Nombre:</h3>
-		  </div>
-		  <div>
-		    {{project.nombre}}
-		  </div>
-		</div>  
-	</div>	
-
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-		<div>
-		  <div>
-		    <h3>Visión:</h3>
-		  </div>
-		  <div>
-		    {{project.vision}}
-		  </div>
-		</div>  
-	</div>	
-
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-		<div>
-		  <div>
-		    <h3>Background:</h3>
-		  </div>
-		  <div>
-		    {{project.background}}
-		  </div>
-		</div>  
-	</div>	
-
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-		<div>
-		  <div>
-		    <h3>Riesgos:</h3>
-		  </div>
-		  <div>
-		    {{project.riesgos}}
-		  </div>
-		</div>  
-	</div>	
-
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-		<div>
-		  <div>
-		    <h3>Alcance:</h3>
-		  </div>
-		  <div>
-		    {{project.alcance}}
-		  </div>
-		</div>  
-	</div>	
-
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-		<div>
-		  <div>
-		    <h3>Fecha Inicio:</h3>
-		  </div>
-		  <div>
-		    {{project.fechainicio}}
-		  </div>
-		</div>  
-	</div>	
-
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-		<div>
-		  <div>
-		    <h3>Fecha Final:</h3>
-		  </div>
-		  <div>
-		    {{project.fechafinal}}
-		  </div>
-		</div>  
-	</div>	
-
-	<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" >
-		<div>
-		  <div>
-		    <h3 class="text-center">Miembros:</h3>
-		  </div>
-		  
-			  <div class="text-center">
-					<table class="table table-hover table-responsive" style="background-color: white;">
-					  <thead>
-					    <tr>
-					      <th class="text-center" scope="col">Matricula</th>
-					      <th class="text-center" scope="col">Nombre</th>
-					      <th class="text-center" scope="col">Carrera</th>
-					      <th class="text-center" scope="col">Role</th>
-					      <th class="text-center" scope="col">Opciones</th>
-					    </tr>
-					  </thead>
-					  <tbody *ngFor="let miembro of miembros; let i =index">
-					    <tr> 
-					      <th class="text-center" scope="row">{{miembro.matricula}}</th>
-					      <td class="text-center">{{miembro.nombre}}</td>
-					      <td class="text-center">{{miembro.carrera}}</td>
-					      <td class="text-center">{{miembrosAux[i]}}</td>
-					      <td class="text-center">
-							<button (click)="eliminarMiembro(miembro.id, miembrosAux[i])">Eliminar</button>        	
-					      </td>
-					    </tr>
-					  </tbody>
-					</table>
-			  </div> 
-		  
-		</div>  
-	</div>	
-
-	<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" >
-		<div>
-		  <div>
-		    <h3 class="text-center">Tecnologías:</h3>
-		  </div>		  	
-
-			<div class="text-center">
-				<table class="table table-hover table-responsive" style="background-color: white;">
-				  <thead>
-				    <tr>
-				      <th class="text-center" scope="col">ID</th>					    	
-				      <th class="text-center" scope="col">Nombre</th>
-				      <th class="text-center" scope="col">Versión</th>
-				      <th class="text-center" scope="col">Opciones</th>
-				    </tr>
-				  </thead>
-				  <tbody *ngFor="let tec of tecnologias">
-				    <tr> 
-				      <th class="text-center" scope="row">{{tec.id}}</th>
-				      <td class="text-center">{{tec.name}}</td>
-				      <td class="text-center">{{tec.version}}</td>					      
-				      <td class="text-center">
-						<button>Eliminar</button>        	
-				      </td>
-				    </tr>
-				  </tbody>
-				</table>
-		 	</div> 
-		  
-		</div>  
-	</div>	
-
-	<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" >
-		<div>
-		  <div>
-		    <h3 class="text-center">Sprints del Proyecto:</h3>
-		  </div>
-		  	
-		  	<div *ngIf="alertMessageSprint">
-				<div>
-					{{alertMessageSprint}}
+				<div class="head-page" *ngIf="identity">      	
+					<button type="button" class="btn btn-primary" [routerLink]="['/mis-proyectos',identity.id]">Volver a Proyectos</button>	
 				</div>
-			</div>
-		  	
-			<form (submit)="createSprint()">
-                <div class="row">
-                    <div class="col-md-4" >
-                        <div class="form-group">
-                            <label>Días</label>
-                            <input class="form-control" type="number" min="1" id="days" name="days" [(ngModel)]="sprint.days">
-                        </div>
-                    </div>
-                    <div class="col-md-4" >
-                        <div class="form-group">
-                            <label>Comentario</label>
-                            <input class="form-control" type="text" id="comment" name="comment" [(ngModel)]="sprint.comment">
-                        </div>
-                    </div>
-                    <div class="col-md-4" >
-                        <input class="form-control" type="hidden" id="project_id" name="prject_id">
-                        <button type="submit" class="btn btn-success pull-right"><i>add box</i></button>
-                    </div>
-                </div>
-            </form>
 
-			  <div class="text-center">
-					<table class="table table-hover table-responsive" style="background-color: white;">
-					  <thead>
-					    <tr>
-					      <th class="text-center" scope="col">ID</th>					    	
-					      <th class="text-center" scope="col">Días</th>
-					      <th class="text-center" scope="col">Comentarios</th>
-					      <th class="text-center" scope="col">Opciones</th>
-					    </tr>
-					  </thead>
-					  <tbody *ngFor="let sprint of sprintsProject; let i =index">
-					    <tr> 
-					      <th class="text-center" scope="row">{{sprint.id}}</th>
-					      <td class="text-center">{{sprint.days}}</td>
-					      <td class="text-center">{{sprint.comment}}</td>					      
-					      <td class="text-center">
-							<button [routerLink]="['/detalles-sprint',sprint.id]">Detalles</button>
-							<button (click)="eliminarSprint(sprint.id)">Eliminar</button>
-					      </td>
-					    </tr>
-					  </tbody>
-					</table>
-			  </div> 
-		  
-		</div>  
-	</div>	
+				<div *ngIf="alertMessage">
+					<div>
+						{{alertMessage}}
+					</div>
+				</div>
+
+				<div *ngIf="identity">
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+						<div>
+							<div>
+								<h3>Nombre:</h3>
+							</div>
+							<div>
+								{{project.nombre}}
+							</div>
+						</div>  
+					</div>	
+
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+						<div>
+							<div>
+								<h3>Visión:</h3>
+							</div>
+							<div>
+								{{project.vision}}
+							</div>
+						</div>  
+					</div>	
+
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+						<div>
+							<div>
+								<h3>Background:</h3>
+							</div>
+							<div>
+								{{project.background}}
+							</div>
+						</div>  
+					</div>	
+
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+						<div>
+							<div>
+								<h3>Riesgos:</h3>
+							</div>
+							<div>
+								{{project.riesgos}}
+							</div>
+						</div>  
+					</div>	
+
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+						<div>
+							<div>
+								<h3>Alcance:</h3>
+							</div>
+							<div>
+								{{project.alcance}}
+							</div>
+						</div>  
+					</div>	
+
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+						<div>
+							<div>
+								<h3>Fecha Inicio:</h3>
+							</div>
+							<div>
+								{{project.fechainicio}}
+							</div>
+						</div>  
+					</div>	
+
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+						<div>
+							<div>
+								<h3>Fecha Final:</h3>
+							</div>
+							<div>
+								{{project.fechafinal}}
+							</div>
+						</div>  
+					</div>	
+
+					<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" style="padding-top: 5%;">
+						<div>
+							<div>
+								<h3 class="text-center">Miembros:</h3>
+							</div>
+							
+								<div class="text-center">
+									<table class="table table-hover table-responsive" style="background-color: white;">
+										<thead>
+											<tr>
+												<th class="text-center" scope="col">Matricula</th>
+												<th class="text-center" scope="col">Nombre</th>
+												<th class="text-center" scope="col">Carrera</th>
+												<th class="text-center" scope="col">Role</th>
+												<th class="text-center" scope="col">Opciones</th>
+											</tr>
+										</thead>
+										<tbody *ngFor="let miembro of miembros; let i =index">
+											<tr> 
+												<th class="text-center" scope="row">{{miembro.matricula}}</th>
+												<td class="text-center">{{miembro.nombre}}</td>
+												<td class="text-center">{{miembro.carrera}}</td>
+												<td class="text-center">{{miembrosAux[i]}}</td>
+												<td class="text-center">
+											<button type="button" class="btn btn-danger" (click)="eliminarMiembro(miembro.id, miembrosAux[i])">Eliminar</button>        	
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div> 
+							
+						</div>  
+					</div>	
+
+					<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" style="padding-top: 5%;">
+						<div>
+							<div>
+								<h3 class="text-center">Tecnologías:</h3>
+							</div>		  	
+
+							<div class="text-center">
+								<table class="table table-hover table-responsive" style="background-color: white;">
+									<thead>
+										<tr>
+											<th class="text-center" scope="col">ID</th>					    	
+											<th class="text-center" scope="col">Nombre</th>
+											<th class="text-center" scope="col">Versión</th>
+											<th class="text-center" scope="col">Opciones</th>
+										</tr>
+									</thead>
+									<tbody *ngFor="let tec of tecnologias">
+										<tr> 
+											<th class="text-center" scope="row">{{tec.id}}</th>
+											<td class="text-center">{{tec.name}}</td>
+											<td class="text-center">{{tec.version}}</td>					      
+											<td class="text-center">
+										<button type="button" class="btn btn-danger">Eliminar</button>        	
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div> 
+							
+						</div>  
+					</div>	
+
+					<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" style="padding-top: 5%;">
+						<div>
+							<div>
+								<h3 class="text-center">Sprints del Proyecto:</h3>
+							</div>
+								
+								<div *ngIf="alertMessageSprint">
+								<div>
+									{{alertMessageSprint}}
+								</div>
+							</div>
+								
+							<form (submit)="createSprint()">
+												<div class="row">
+														<div class="col-md-4" >
+																<div class="form-group">
+																		<label>Días</label>
+																		<input class="form-control" type="number" min="1" id="days" name="days" [(ngModel)]="sprint.days">
+																</div>
+														</div>
+														<div class="col-md-4" >
+																<div class="form-group">
+																		<label>Comentario</label>
+																		<input class="form-control" type="text" id="comment" name="comment" [(ngModel)]="sprint.comment">
+																</div>
+														</div>
+														<div class="col-md-4" >
+																<input class="form-control" type="hidden" id="project_id" name="prject_id">
+																<button type="submit" class="btn btn-success pull-right"><i>Crear</i></button>
+														</div>
+												</div>
+										</form>
+
+								<div class="text-center">
+									<table class="table table-hover table-responsive" style="background-color: white;">
+										<thead>
+											<tr>
+												<th class="text-center" scope="col">ID</th>					    	
+												<th class="text-center" scope="col">Días</th>
+												<th class="text-center" scope="col">Comentarios</th>
+												<th class="text-center" scope="col">Opciones</th>
+											</tr>
+										</thead>
+										<tbody *ngFor="let sprint of sprintsProject; let i =index">
+											<tr> 
+												<th class="text-center" scope="row">{{sprint.id}}</th>
+												<td class="text-center">{{sprint.days}}</td>
+												<td class="text-center">{{sprint.comment}}</td>					      
+												<td class="text-center">
+											<button type="button" class="btn btn-primary" [routerLink]="['/detalles-sprint',sprint.id]">Detalles</button>
+											<button type="button" class="btn btn-danger" (click)="eliminarSprint(sprint.id)">Eliminar</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div> 
+							
+						</div>  
+					</div>	
+				</div>
+	</div>
 </div>

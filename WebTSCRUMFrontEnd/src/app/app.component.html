@@ -1,46 +1,90 @@
 
-  <div class="content-wrapper" style="padding-top: 5%;">
+<div class="col-lg-11" *ngIf="!identity">
+  <div class="content-wrapper">
       <div class="container-fluid">
-          <div class="col-lg-11" *ngIf="!identity">
-              <div class="col-lg-6">
-                <div *ngIf="errorMessage">
-                  <div>
-                    <strong>Error</strong> {{errorMessage}}
-                  </div>
-                </div>
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-4"></div>
-
-                    <div class="col-md-8">
-                        <div class="card card-login mx-auto mt-5">
-                          <div class="card-header">Login</div>
-                          <img src="assets/img/logo/tcrum.png" class="img-responsive" alt="Responsive image" height="100px" width="250px">
-                          <div class="card-body">
-                              <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-7">
-                                  <div class="form-group">
-                                      <label for="exampleInputEmail1">Matrícula</label>
-                                      <input type="text" #matricula="ngModel" name="matricula" [(ngModel)]="user.matricula" required>
-                                      <span *ngIf="!matricula.valid && matricula.touched">
-                                        La matricula 
-                                      </span>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="exampleInputPassword1">Contraseña</label>
-                                      <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" required>
-                                    </div>
-                                
-                                    <button type="submit" class="btn btn-primary">Entrar</button>
-                                </form>
-                          </div>
-                        </div>  
-                    </div>
-                  </div>    
-                </div>
+          <div class="col-lg-6">
+            <div *ngIf="errorMessage">
+              <div>
+                <strong>Error</strong> {{errorMessage}}
               </div>
-            </div> 
+            </div>
+          </div>
+
+          <div class="container">
+	    
+              <div class="col-md-10 col-md-offset-1 main" >
+              <div class="col-md-6 left-side" >
+                <h3>TCRUM</h3>
+                <p>La herramienta de desarrollo ágil.</p>
+                <br>
+          
+          
+              </div><!--col-sm-6-->
+
+              <div class="col-md-6 right-side">
+                <img src="">
+              </div>
+              
+              <div class="col-md-6 right-side">
+              <h3>Login</h3>
+              
+          <!--Form with header-->
+                <div class="form">
+                
+                    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                        <label for="form2">Matrícula</label>
+                            <input type="text" #matricula="ngModel" name="matricula" [(ngModel)]="user.matricula" required class="form-control input-lg">
+                            
+                        </div>
+                
+                        <div class="form-group">
+                        <label for="form4">Password</label>
+                            <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" required class="form-control input-lg">
+                          
+                        </div>
+                
+                        <div class="text-xs-center">
+                            <button type="submit" class="btn btn-deep-purple">Login</button>
+                        </div>
+                  </form>
+                </div>
+            </div>
+          </div>
+                  
+        </div>
+
+          <!--
+          <div class="card card-login mx-auto mt-5">
+            <div class="card-header">Login</div>
+            <div class="card-body">
+                <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-7">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Matrícula</label>
+                        <input type="text" #matricula="ngModel" name="matricula" [(ngModel)]="user.matricula" required>
+                        <span *ngIf="!matricula.valid && matricula.touched">
+                          La matricula 
+                        </span>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Contraseña</label>
+                        <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" required>
+                      </div>
+                  
+                      <button type="submit" class="btn btn-primary">Entrar</button>
+                  </form>
+            </div>
+          </div>
+          -->
+        </div>
       </div>
-  </div>
+</div> 
+
+
+
+<div [class.hidden]="!identity" class="central col-lg-11">
+  <router-outlet></router-outlet>
+</div>
 
 <div *ngIf="identity" class="navigation col-lg-1 col-md-1 col-sm-2 col-xs-3">
 
@@ -55,10 +99,6 @@
         </ul>
       </div>
     </nav>
-</div>
-
-<div [class.hidden]="!identity" class="central col-lg-11">
-  <router-outlet></router-outlet>
 </div>
 
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

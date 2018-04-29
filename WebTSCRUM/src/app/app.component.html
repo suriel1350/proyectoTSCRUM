@@ -1,43 +1,98 @@
-<div *ngIf="identity" class="navigation col-lg-1 col-md-1 col-sm-2 col-xs-3">
-  <nav id="user_logged">
-    
-    
 
-    
-    <a (click)="logout()" class="btn-logout">      
-      Salir
-    </a>
-  </nav> 
-</div>
+<div class="col-lg-11" *ngIf="!identity">
+  <div class="content-wrapper">
+      <div class="container-fluid">
+          <div class="col-lg-6">
+            <div *ngIf="errorMessage">
+              <div>
+                <strong>Error</strong> {{errorMessage}}
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+	    
+              <div class="col-md-10 col-md-offset-1 main" >
+              <div class="col-md-6 left-side" >
+                <h3>TCRUM</h3>
+                <p>La herramienta de desarrollo ágil.</p>
+                <br>
+
+                <img src="assets/img/logo/tcrum.png" class="img-fluid" alt="Responsive image">
+          
+          
+              </div><!--col-sm-6-->
+              
+              <div class="col-md-6 right-side">
+              <h3>Login</h3>
+              
+          <!--Form with header-->
+                <div class="form">
+                
+                    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                        <label for="form2">Matrícula</label>
+                            <input type="text" #matricula="ngModel" name="matricula" [(ngModel)]="user.matricula" required class="form-control input-lg">
+                            
+                        </div>
+                
+                        <div class="form-group">
+                        <label for="form4">Password</label>
+                            <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" required class="form-control input-lg">
+                          
+                        </div>
+                
+                        <div class="text-xs-center">
+                            <button type="submit" class="btn btn-deep-purple">Login</button>
+                        </div>
+                  </form>
+                </div>
+            </div>
+          </div>
+                  
+        </div>
+        </div>
+      </div>
+</div> 
+
+
 
 <div [class.hidden]="!identity" class="central col-lg-11">
   <router-outlet></router-outlet>
 </div>
 
-<div class="col-lg-11" *ngIf="!identity">
-  <div class="col-lg-6">
-    <p>Identificate</p>
-    <div *ngIf="errorMessage">
-      <div>
-        <strong>Error</strong> {{errorMessage}}
+<div *ngIf="identity" class="navigation col-lg-1 col-md-1 col-sm-2 col-xs-3">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="user_logged">
+      <a class="navbar-brand" style="color: white;">
+          <img src="assets/img/logo/tcrum.png" width="100" height="50" alt=""></a>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="modal" data-target="#logoutModal">
+              <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+</div>
+
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea salir?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Al salir se cerrará su sesión actual.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" (click)="logout()" data-dismiss="modal">Logout</a>
+        </div>
       </div>
     </div>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-7">
-      <p>
-        <label>Matricula</label>
-        <input type="text" #matricula="ngModel" name="matricula" [(ngModel)]="user.matricula" required>
-        <span *ngIf="!matricula.valid && matricula.touched">
-          La matricula es obligatoria
-        </span>
-      </p>
-      <p>
-        <label>Contraseña</label>
-        <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" required>
-      </p>
-
-      <input type="submit" value="Entrar">
-    </form>
   </div>
-</div>
 
 
