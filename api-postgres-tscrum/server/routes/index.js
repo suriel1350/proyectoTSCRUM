@@ -20,7 +20,12 @@ module.exports = (app) => {
     message: 'Welcome to the TSCRUM API!',
   }));
 
-  // Api Routes para Miembros
+  // Api Routes para testing
+  app.get('/api/miembros-test/:idUser', miembrosController.allMiembros);
+  app.put('/api/update-user-test/:id', miembrosController.updateUser);
+  app.post('/api/technologies-test', technologiesController.create); 
+  
+  
   app.post('/api/register', miembrosController.saveUser); 	//Ruta para registrar a un miembro
   app.post('/api/login', miembrosController.loginUser); 	//Ruta para loguearse (gethash devuelve el token)
   app.post('/api/upload-image-user/:id', [md_auth.ensureAuth, md_upload], miembrosController.uploadImage);  

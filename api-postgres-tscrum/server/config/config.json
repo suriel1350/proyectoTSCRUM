@@ -1,15 +1,15 @@
 {
   "development": {
-    "username": "memo",
-    "password": "12345",
+    "username": "postgres",
+    "password": "holamundo",
     "database": "tscrum",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
   },
   "test": {
-    "username": "memo",
-    "password": "12345",
+    "username": "postgres",
+    "password": "holamundo",
     "database": "tscrum",
     "host": "127.0.0.1",
     "port": 5432,
