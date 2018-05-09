@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+%opening
+\title {Reporte técnico}
+\author{Equipo TSCRUM}
+\date{09/05/2018}
+
+\begin{document}
+
+\maketitle
+
+\section{Arquitectura y web services}
+\includegraphics[scale=0.4]{Diagrama}
+
+
+
+La arquitectura del proyecto se encuentra dividida en varias capas, esto con el fin de aplicar prácticas que todo proyecto de software requiere a nivel de producción. El sistema cuenta con las siguientes capas:
+Usuario.
+Presentación.
+Servicios.
+Negocio.
+Datos.
+Recursos.
+
+
+\section{Capa de usuario}
+Esta capa repesenta la forma en que el usuario accede al sistema, para ello basta ingresar a través de un navegador web al sitio de TSCRUM. \newline\newline
+
+\section{Capa de presentación}
+Esta capa se encuentra dentro de un contenedor docker, aquí se emplearon las tecnologías HTML5, CSS3, Bootstrap, Java Script y Angular.\newline\newline
+
+\section{Capa de servicios}
+Contenida en el segundo contenedor docker, esta capa está diseñada para poder trabajar mediante protocolo HTTP o HTTPS.\newline\newline
+
+\section{Capa de negocios}
+Contenida en el segundo contenedor docker, emplea las tecnologías NodeJS, npm y Sequelize.\newline\newline
+
+\section{Capa de datos}
+Contenida en el segundo contenedor docker, aquí se encuentran dos REST APIS, la correspondiente a funciones de miembros y la correspondiente a proyectos.\newline\newline
+
+\section{Capa de recursos}
+Esta capa encontramos el sistema gestor de bases de datos PostgreSQL, el cual se encarga de alamacenar toda la información correspondiente a miembros y proyectos del sistema.\newline\newline
+
+\section{Fuentes de datos}
+Aquí encontramos las diversas formas que las capas usan para comunicarse entre si, como lo son los Tokens de seguridad, mensajes tipo JSON, peticiones GET/POST y comunicación por protocolo TCP/IP.\newline\newline
+
+\end{document}
